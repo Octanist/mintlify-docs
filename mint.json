@@ -2,8 +2,8 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Docs octanist",
   "logo": {
-    "dark": "/logo/logo-no-bg.svg",
-    "light": "/logo/logo-white.svg"
+    "dark": "/logo/logo-white.svg",
+    "light": "/logo/logo-no-bg.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
@@ -25,12 +25,6 @@
     "name": "Dashboard",
     "url": "https://octanist.com/auth/signin/"
   },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
   "anchors": [
     {
       "name": "Documentation",
@@ -51,35 +45,32 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development"]
-    },
-    {
-      "group": "Essentials",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "introduction",
+        "quickstart",
+        "general settings",
+        "members",
+        "billing"
       ]
     },
     {
-      "group": "API Documentation",
-      "pages": ["api-reference/introduction"]
+      "group": "Incomming integrations",
+      "pages": [
+        "incoming-integrations/gtm",
+        "incoming-integrations/manual",
+        "incoming-integrations/import"
+      ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Outgoing integrations",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "outgoing-integrations/google-ads",
+        "outgoing-integrations/google-analytics",
+        "outgoing-integrations/meta"
       ]
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://linkedin.com/company/mintlify"
+    "linkedin": "https://www.linkedin.com/company/octanist"
   }
 }
