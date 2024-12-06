@@ -25,17 +25,17 @@ description: The Octanist GTM integration makes it easy to send leads to Octanis
 
 ## 1. Setting up the integration
 
-- Navigate within Octanist to **Integrations > Incoming**.![](images/incoming-gtm-clickonincoming.jpg)
+- Navigate within Octanist to **Integrations > Incoming**.![](/images/incoming-gtm-clickonincoming.jpg)
 
-* Under **Incoming** select **Google Tag manager**
+- Under **Incoming** select **Google Tag manager**
 
-![](images/incoming-gtm-clickongtm.jpg)
+![](/images/incoming-gtm-clickongtm.jpg)
 
-- Download the Octanist GTM template (`template.tpl`) to your computer.![](images/incoming-gtm-clickondownloadtemplate.jpg)
+- Download the Octanist GTM template (`template.tpl`) to your computer.![](/images/incoming-gtm-clickondownloadtemplate.jpg)
 
 - Copy the **Octanist Organization ID** and save it somewhere. You can always return here to retrieve it again.
 
-![](images/incoming-gtm-copyoctanistid.jpg)
+![](/images/incoming-gtm-copyoctanistid.jpg)
 
 ## 2. Prepare the Website
 
@@ -43,7 +43,13 @@ description: The Octanist GTM integration makes it easy to send leads to Octanis
 
 - Make sure the lead data is placed in the dataLayer. Ask a developer to implement the following code to activate the dataLayer push after a lead form is completed:
 
-> _Dear \[Recipient],We are currently in the process of setting up_ [_Octanist_](https://octanist.com/)_, a tool that helps us determine the true value of the leads coming through our website.To make this work and send data effectively to Octanist, we need to ensure the data is pushed to the_ [_dataLayer_](https://developers.google.com/tag-platform/tag-manager/datalayer)_. This will allow us to capture the necessary information using Google Tag Manager and send it to Octanist.Therefore, we kindly request adding the following code to the backend of our forms:_
+> _Dear \[Recipient],_
+>
+> _We are currently in the process of setting up_ [_Octanist_](https://octanist.com/)_, a tool that helps us determine the true value of the leads coming through our website._
+>
+> _To make this work and send data effectively to Octanist, we need to ensure the data is pushed to the_ [_dataLayer_](https://developers.google.com/tag-platform/tag-manager/datalayer)_. This will allow us to capture the necessary information using Google Tag Manager and send it to Octanist._
+>
+> _Therefore, we kindly request adding the following code to the backend of our forms:_
 
 ```tsx
 <script>
@@ -59,7 +65,9 @@ dataLayer.push({
 </script>
 ```
 
-> Please let us know once this is in place and if you need any assistance.Kind regards,
+> Please let us know once this is in place and if you need any assistance.
+>
+> Kind regards,
 
 ## 3. Set Up Google Tag Manager
 
@@ -68,21 +76,21 @@ dataLayer.push({
    - Click on Default Worksapce
 
    - Give the Workspace a name (e.g., _Octanist Setup_).
-     ![](images/image.png)
+     ![](/images/image.png)
 
 2. **Upload the Template**
 
    - Go to **Templates > Tag Templates > New**.
 
-![](images/uploadthetemplate.png)
+![](/images/uploadthetemplate.png)
 
 1. Click on the three dots in the top-right corner, select **Import**, and upload `template.tpl`. You have dou have downloaded this on step 1. Do not change the name of the original name.
 
-![](images/6bbb08b8-0b1b-4eab-83f1-76f051af9fc0.png)
+![](/images/6bbb08b8-0b1b-4eab-83f1-76f051af9fc0.png)
 
 1. Save the template - Don't cahnge any ettings here
 
-![](images/850cd330-08af-48a6-a91a-e497b5fc1772.png)
+![](/images/850cd330-08af-48a6-a91a-e497b5fc1772.png)
 
 1. **Configure the Tag**
 
