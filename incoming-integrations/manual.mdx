@@ -1,59 +1,54 @@
 ---
-title: 'Images and Embeds'
-description: 'Add image, video, and other HTML elements'
-icon: 'image'
+title: Manual Integration (API)
+description: You can manually add offline conversions to the dashboard by sending them to our API.
 ---
 
-<img
-  style={{ borderRadius: '0.5rem' }}
-  src="https://mintlify-assets.b-cdn.net/bigbend.jpg"
-/>
+We offer an API that you can use to send offline conversions to the dashboard.  
+This is useful if you have a custom CRM or a system that you use to track offline conversions.  
+You can implement our API in any system of your choice.
 
-## Image
+## Params
 
-### Using Markdown
+These are the parameters you need to send to the API:
 
-The [markdown syntax](https://www.markdownguide.org/basic-syntax/#images) lets you add images using the following code
+- **`gclid`**: Google Click ID, the identifier you get when clicking on a Google Ad.
+- **`fbc`**: Facebook Click ID, the identifier you get when clicking on a Facebook or Instagram Ad.
+- **`fbp`**: Facebook Platform ID, containing data from the first-party cookie of the Facebook Pixel.
+- **`ga4cid`**: Google Analytics 4 Client ID, a random number used to identify a user.
+- **`ga4sid`**: Google Analytics 4 Session ID, used to identify a converted lead in your last session.
+- **`name`**: The name of the lead.
+- **`email`**: The email of the lead.
+- **`phone`**: The phone number of the lead.
+- **`website`**: The website where the lead was generated.
+- **`path`**: The pathname of the page where the lead was generated.
+- **`ad_storage`**: Contains either `"GRANTED"` or `"DENIED"`, indicating if users opted in for marketing and advertising purposes based on Google's Consent Mode state. Required for sending data to advertising channels.
+- **`ad_user_data`**: Contains either `"GRANTED"` or `"DENIED"`, indicating if users opted in for using hashed first-party data based on Google's Consent Mode state. Required for sending data to advertising channels.
+- **`ad_personalization`**: Contains either `"GRANTED"` or `"DENIED"`, indicating if users opted in for personalized advertising based on Google's Consent Mode state. Required for sending data to advertising channels.
+- **`analytics_storage`**: Contains either `"GRANTED"` or `"DENIED"`, indicating if users opted in for analytics purposes based on Google's Consent Mode state.
 
-```md
-![title](/path/image.jpg)
+In an API request, either a `gclid`, `fbc`, or `ga4cid` is required, and either the `name`, `phone`, or `email` is required to identify leads.
+
+## URL
+
+This is the URL you need to send the request to. Send a GET request to this URL with the parameters:
+
+```bash
+https://octanist.com/api/integrations/incoming/manual/{YOUR_ORGANIZATION_ID}/
+
 ```
 
-Note that the image file size must be less than 5MB. Otherwise, we recommend hosting on a service like [Cloudinary](https://cloudinary.com/) or [S3](https://aws.amazon.com/s3/). You can then use that URL and embed.
+Once you have the parameters, you can send a request to the API.  
+The data will then be visible in the dashboard under "Open Leads."
 
-### Using Embeds
+## Organization ID
 
-To get more customizability with images, you can also use [embeds](/writing-content/embed) to add images
+Before sending a request to the API, you need to retrieve your **Organization ID**.  
+The Organization ID is included as part of the URL used for the API request.
 
-```html
-<img height="200" src="/path/image.jpg" />
-```
+You can find your Organization ID in the dashboard:
 
-## Embeds and HTML elements
+1. Navigate to **Incoming Integrations**.
+2. Select **Manual**.
+3. Generate the URL with the required parameters. Your Organization ID will be included in this URL.
 
-<iframe
-  width="560"
-  height="315"
-  src="https://www.youtube.com/embed/4KzFe50RQkQ"
-  title="YouTube video player"
-  frameBorder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowFullScreen
-  style={{ width: '100%', borderRadius: '0.5rem' }}
-></iframe>
-
-<br />
-
-<Tip>
-
-Mintlify supports [HTML tags in Markdown](https://www.markdownguide.org/basic-syntax/#html). This is helpful if you prefer HTML tags to Markdown syntax, and lets you create documentation with infinite flexibility.
-
-</Tip>
-
-### iFrames
-
-Loads another HTML page within the document. Most commonly used for embedding videos.
-
-```html
-<iframe src="https://www.youtube.com/embed/4KzFe50RQkQ"> </iframe>
-```
+For detailed steps on setting up your account, please refer to our **[Getting Started Guide](https://docs.octanist.com/getting-started/)**.
