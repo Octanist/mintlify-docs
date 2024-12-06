@@ -1,37 +1,119 @@
 ---
-title: 'Code Blocks'
-description: 'Display inline code and code blocks'
-icon: 'code'
+title: Google Tag Manager (GTM) Integration
+description: The Octanist GTM integration makes it easy to send leads to Octanist. Follow these steps to quickly set up the integration.
 ---
 
-## Basic
+## Table of Contents
 
-### Inline Code
+1. [Create an Octanist Account](#1-create-an-octanist-account)
 
-To denote a `word` or `phrase` as code, enclose it in backticks (`).
+2. [Prepare the Website](#2-prepare-the-website)
 
+3. [Set Up Google Tag Manager](#3-set-up-google-tag-manager)
+
+   1. [Create a Workspace](#create-a-workspace)
+
+   2. [Upload the Template](#upload-the-template)
+
+   3. [Configure the Tag](#configure-the-tag)
+
+   4. [Test and Publish](#test-and-publish)
+
+4. [Optional: Google Analytics 4 (GA4)](#4-optional-google-analytics-4-ga4)
+
+5. [Octanist - Outgoing Integration](#5-octanist-outgoing-integration)
+
+## 1. Setting up the integration
+
+- Navigate within Octanist to **Integrations > Incoming**.![](images/incoming-gtm-clickonincoming.jpg)
+
+- Under **Incoming** select **Google Tag manager**
+
+![](images/incoming-gtm-clickongtm.jpg)
+
+- Download the Octanist GTM template (`template.tpl`) to your computer.![](images/incoming-gtm-clickondownloadtemplate.jpg)
+
+- Copy the **Octanist Organization ID** and save it somewhere. You can always return here to retrieve it again.
+
+![](images/incoming-gtm-copyoctanistid.jpg)
+
+## 2. Prepare the Website
+
+- To send lead data to Octanist, the data must be available on the website. We highly recommend using a **dataLayer push event** to ensure consistency and robust measurement.
+
+- Make sure the lead data is placed in the dataLayer. Ask a developer to implement the following code to activate the dataLayer push after a lead form is completed:
+
+> _Dear \[Recipient],_
+>
+> _We are currently in the process of setting up_ [_Octanist_](https://octanist.com/)_, a tool that helps us determine the true value of the leads coming through our website._
+>
+> _To make this work and send data effectively to Octanist, we need to ensure the data is pushed to the_ [_dataLayer_](https://developers.google.com/tag-platform/tag-manager/datalayer)_. This will allow us to capture the necessary information using Google Tag Manager and send it to Octanist._
+>
+> _Therefore, we kindly request adding the following code to the backend of our forms:_
+
+```tsx
+<script>
+var dataLayer = dataLayer || [];
+dataLayer.push({
+  event: 'submit_lead_form',
+  user_data: {
+    email: yourEmailVariable,
+    phone_number: yourPhoneVariable,
+    company_name: yourCompanyVariable // optional
+  }
+});
+</script>
 ```
-To denote a `word` or `phrase` as code, enclose it in backticks (`).
-```
 
-### Code Block
+> Please let us know once this is in place and if you need any assistance.
+>
+> Kind regards,
 
-Use [fenced code blocks](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks) by enclosing code in three backticks and follow the leading ticks with the programming language of your snippet to get syntax highlighting. Optionally, you can also write the name of your code after the programming language.
+## 3. Set Up Google Tag Manager
 
-```java HelloWorld.java
-class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-}
-```
+1. **Create a Workspace**
 
-````md
-```java HelloWorld.java
-class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-}
-```
-````
+   - Click on Default Worksapce
+
+   - Give the Workspace a name (e.g., _Octanist Setup_).
+     ![](images/image.png)
+
+2. **Upload the Template**
+
+   - Go to **Templates > Tag Templates > New**.
+
+![](images/uploadthetemplate.png)
+
+1. Click on the three dots in the top-right corner, select **Import**, and upload `template.tpl`. You have dou have downloaded this on step 1. Do not change the name of the original name.
+
+![](images/6bbb08b8-0b1b-4eab-83f1-76f051af9fc0.png)
+
+1. Save the template - Don't cahnge any ettings here
+
+![](images/850cd330-08af-48a6-a91a-e497b5fc1772.png)
+
+1. **Configure the Tag**
+
+   - Create a new tag: **Octanist - Offline Conversion Tracking**.
+
+   - Enter your **Octanist ID**.
+
+   - Add variables for email address, phone number, and company name.
+
+   - Set the trigger, for example in step 2 we create an event for the `submit_lead_form` trigger.
+
+2. **Optional: Google Analytics 4 (GA4)**
+
+   - Enter the **GA4 Measurement ID** (e.g., `G-12345678`).
+
+   - Optionally add extra fields for better lead qualification.
+
+3. **Test and Publish**
+
+   - Test the form using the GTM debug mode.
+
+   - Publish the container once everything works correctly.
+
+## 5. Octanist - Outgoing Integration
+
+Your data stream is now active! For setting up outgoing integrations, refer to our [Outgoing Integrations](https://docs.octanist.com/outgoing-integrations/google-ads/) documentation.
