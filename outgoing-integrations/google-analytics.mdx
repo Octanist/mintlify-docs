@@ -6,41 +6,54 @@ description: Send your closed, open, and converted leads to google analytics 4 t
 ## Table of Contents
 
 1. [Overview](#1-overview)
+
 2. [How the Measurement Protocol Works](#2-how-the-measurement-protocol-works)
+
 3. [Setup Instructions](#3-setup-instructions)
+
 4. [Reporting in google analytics 4](#4-reporting-in-google-analytics)
 
 ## 1. Overview
 
-The google analytics 4 (GA4) integration sends your marked closed, open, and converted leads to google analytics 4. This process uses the [google analytics 4 Measurement Protocol](https://developers.google.com/analytics/devguides/collection/protocol/ga4).  
+The google analytics 4 (GA4) integration sends your marked closed, open, and converted leads to google analytics 4. This process uses the [google analytics 4 Measurement Protocol](https://developers.google.com/analytics/devguides/collection/protocol/ga4).
 This server-to-server solution ensures all quantitative lead data is sent to google analytics 4 and tied to specific channels. No personal or client data is sent to google analytics 4.
 
 > **Note:** While the Measurement Protocol sends 100% of the data to google analytics 4, it may face challenges linking data back to a user or session. Handling of the Client ID and Session ID is managed by Octanist.
 
 ## 2. How the Measurement Protocol Works
 
-1. **"Won" Leads:**  
-   Whenever a user is marked as a "Won" Lead, the event [`close_convert_lead`](https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#close_convert_lead) is sent to google analytics 4 along with corresponding parameters.
+1. **"Won" Leads:**
+   Whenever a user is marked as a "Won" Lead, the event [`close_convert_lead`](https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#close_convert_lead) is sent to google analytics 4 along with corresponding parameters (e.g. the **value** and **currency**).
 
-2. **"Open" Leads:**  
-   When a note is added or updated for an "Open" Lead, the event [`working_lead`](https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#working_lead) is sent to google analytics 4. The content of the note is passed as the parameter `lead_status`.
+2. **"Open" Leads:**
+   When a value is added or updated for an "Open" Lead, the event [`working_lead`](https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#working_lead) is sent to google analytics 4. The content of the note is passed as the parameter `lead_status`.
 
-3. **"Lost" Leads:**  
+3. **"Lost" Leads:**
    If a user does not convert and is marked as a "Lost" Lead, the event [`close_unconvert_lead`](https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#close_unconvert_lead) is sent. The parameter `unconvert_lead_reason` contains the reason for the lost lead, based on the note content.
 
 ## 3. Setup Instructions
 
 1. In your Octanist account, go to **Integrations > Outgoing**.
+
 2. Select **google analytics 4**.
-3. Fill in a name for the integration (e.g., _Octanist - GA4 Integration_).
+
+3. Fill in a name for the integration (e.g., *Octanist - GA4 Integration*).
+
 4. Enter your **GA4 Measurement ID**.
-   - This can be found in your GA4 account under **Data Streams**. See [Google's guide](https://support.google.com/analytics/answer/12270356?hl=en) for details.
+
+   * This can be found in your GA4 account under **Data Streams**. See [Google's guide](https://support.google.com/analytics/answer/12270356?hl=en) for details.
+
 5. Enter your **GA4 API Key**:
-   - In your GA4 Data Stream, click **Measurement Protocol API Secrets**.
-   - Create a key and give it a clear name (e.g., _Octanist - GA4 Integration_).
+
+   * In your GA4 Data Stream, click **Measurement Protocol API Secrets**.
+
+   * Create a key and give it a clear name (e.g., *Octanist - GA4 Integration*).
+
 6. Click **Create google analytics 4 Integration**.
 
 ## 4. Reporting in google analytics 4
 
-To improve reporting, mark the `close_convert_lead` event as a **Key Event (Conversion)** in GA4.  
+Add the [custom dimensions](https://support.google.com/analytics/answer/14240153?hl=en) `lead_status` and `unconvert_lead_reason` to view the text values of your notes entered in Octanist.
+
+To improve reporting, mark the `close_convert_lead` event as a **Key Event (Conversion)** in GA4.
 This will help you better understand the user journey and simplify reporting.
