@@ -1,8 +1,80 @@
 ---
 title: Import
-description: Send offline conversions to the dashboard to track leads generated from offline sources.
+description: Import your existing leads into Octanist using a CSV or Excel file.
 ---
 
-## Coming soon
+## Table of Contents
 
-The import feature is coming soon. Stay tuned for updates.
+1. [Set Up the Import](#1-set-up-the-import)
+2. [Download Template (Recommended)](#2-download-template-recommended)
+3. [Importing Your Leads](#3-importing-your-leads)
+
+***
+
+## 1. Set Up the Import
+
+Within Octanist, navigate to **Integrations > Incoming**.
+
+1. Click on **Import**.
+2. Follow the requirements for setting up the manual import.
+
+Before uploading your file, ensure that the **time of conversion** (when a lead became a sale) is formatted correctly. This step is essential for tying sales back to campaigns, such as Google Ads.
+
+### Date and Time Formats
+
+**Important:**  
+Use one of the following date and time formats in your CSV or Excel file. If a different format is used, the import will fail.
+
+| **Type**      | **Format**               | **Example of Current Timestamp**    |
+|---------------|--------------------------|-------------------------------------|
+| ISO 8601      | YYYY-MM-DDTHH:mm:ss.sssZ | 2024-12-15T20:47:03.409Z           |
+| Short date    | YYYY-MM-DD               | 2024-12-15                         |
+| US date       | MM/DD/YYYY               | 12/15/2024                         |
+
+**Note:** Consistency in date formats across your file is crucial for accurate importing. For more information on correct formats, check [this page](https://octanist.com/formats-guide).
+
+### Additional Requirements
+
+- **Missing Data:** Leave fields empty for missing values—do not use placeholders like "-" or "0."
+- Review your file for these requirements to ensure a smooth import process.
+
+***
+
+## 2. Download Template (Recommended)
+
+To minimize errors, download our [CSV template](https://octanist.com/integrations/incoming/import/).
+
+1. Open the template in your preferred editor.
+2. Paste your leads and fill in the required fields.
+3. Save your file when ready.
+
+When your file is prepared, proceed to the **Start Import Process** section in Octanist.
+
+***
+
+## 3. Importing Your Leads
+
+1. Click on **Start Import Process** on the [Manual Upload page](https://octanist.com/integrations/incoming/import/).
+2. Select the file that contains your leads.
+3. A preview of the import will appear. Press **Next**.
+
+### Mapping Columns and Values
+
+Match the columns in your file to the corresponding fields in Octanist:
+
+- For example, if your file uses "Converted Leads," you can map it to **"Won Leads"** (the term used by Octanist).
+
+Once the mapping is complete, press **Next**.
+
+### Final Review and Upload
+
+1. Review the final mapping and data summary.
+2. If everything is correct, press **Confirm** to start the upload.
+3. Your leads will be imported and immediately available in Octanist.
+
+### Troubleshooting
+
+If errors occur:
+
+- Check that the **date format** matches one of the accepted formats.
+- Contact [support@octanist.com](mailto:support@octanist.com) for assistance.
