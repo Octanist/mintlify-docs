@@ -6,42 +6,59 @@ description: Synchronize your data with Google Ads to link leads and conversions
 ## Table of Contents
 
 1. [Octanist](#1-octanist)
+
 2. [Google Ads](#2-google-ads)
 
 ## 1. Octanist
 
 1. Go to [octanist.com](https://octanist.com/) and navigate to **Integrations > Outgoing**.
-2. Select **Google Ads**.
-3. Give the integration a clear and concise name, for example:  
-   _Company Name - Octanist - Google Ads Integration_.
-4. Octanist will generate a unique link. **Save this link carefully, as you will only receive it once.**  
-   The link will look like this:
 
-   `https://api.octanist.com/integrations/outgoing/googleads/{{Octanist ID}}/?apikey=oct_{{Unique Key}}`
+2. Select **Google Ads**.
+
+3. Give the integration a clear and concise name, for example:
+   *Company Name - Octanist - Google Ads Integration*.
+
+4. Octanist will generate a unique link. **Save this link carefully, as you will only receive it once.**
+   The link will look like this:`https://api.octanist.com/integrations/outgoing/googleads/{{Octanist ID}}/?apikey=oct_{{Unique Key}}`
 
 ## 2. Google Ads
 
 1. Go to [Google Ads](https://ads.google.com/aw/overview).
-2. Navigate to your account and then to **Goals > Overview**.
+
+2. Navigate to your account and then to **Goals > Summary**.
+
 3. Create a new conversion action and select **Import**:
-   - Under import, choose **CRMs, files, or other data sources**.
-   - Then select **Conversions from clicks**.
-4. When prompted to select a data source, choose _"Skip this step and set up a data source later."_
+
+   * Under import, choose **CRMs, files, or other data sources**.
+
+   * Then select **Conversions from clicks**.
+
+4. When prompted to select a data source, choose *"Skip this step and set up a data source later."*
+
 5. In the next step, select **Converted Lead** as the conversion goal.
-6. Give this conversion goal a name, for example: _Octanist - Converted Lead_.
-   > **Note:** This name must match exactly with the conversion action name in Octanist.
-7. Save the conversion action.
+
+6. Give this conversion goal a name, for example: *Octanist - Converted Lead*.> **Note:** This name must match exactly with the conversion action name in Octanist.
+
+7. Save the conversion action and click **Next**.
+
+8. On the next screen, you will be prompted to set up your new data source. Do not proceed with this step yet. Click **Done** instead.
 
 ### Configuring Uploads
 
-8. Go back to **Goals > Uploads**.
-9. Open the **Schedules** tab and add a new schedule:
-   - Choose _HTTPS_ as the source.
-   - Enter the link provided by Octanist in the _Source URL_ field.
-   - Set _Frequency_ to _Weekly on Sunday_.  
+1. Go back to **Goals > Uploads**.
+
+2. Open the **Schedules** tab and add a new schedule:
+
+   * Choose *HTTPS* as the source.
+
+   * Enter the link provided by Octanist in the *Source URL* field.
+
+   * Set *Frequency* to *Weekly on Sunday*.
      (Daily synchronization is not necessary unless leads convert within 24 hours.)
-   - Choose a preferred time, for example, _0:00_.
-10. Save the schedule.
+
+   * Choose a preferred time, for example, *0:00*.
+
+3. Save the schedule.
 
 ## Important
 
