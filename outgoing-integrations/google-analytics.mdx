@@ -1,6 +1,6 @@
 ---
-title: Google analytics 4 Integration
-description: Send your closed, open, and converted leads to google analytics 4 to track their origins.
+title: "Google analytics 4 Integration"
+description: "Send your closed, open, and converted leads to google analytics 4 to track their origins."
 ---
 
 ## Table of Contents
@@ -15,10 +15,12 @@ description: Send your closed, open, and converted leads to google analytics 4 t
 
 ## 1. Overview
 
-The google analytics 4 (GA4) integration sends your marked closed, open, and converted leads to google analytics 4. This process uses the [google analytics 4 Measurement Protocol](https://developers.google.com/analytics/devguides/collection/protocol/ga4).
+The google analytics 4 (GA4) integration sends your marked closed, open, and converted leads to google analytics 4. This process uses the [Google Analytics 4 Measurement Protocol](https://developers.google.com/analytics/devguides/collection/protocol/ga4).
 This server-to-server solution ensures all quantitative lead data is sent to google analytics 4 and tied to specific channels. No personal or client data is sent to google analytics 4.
 
-> **Note:** While the Measurement Protocol sends 100% of the data to google analytics 4, it may face challenges linking data back to a user or session. Handling of the Client ID and Session ID is managed by Octanist.
+<Warning>
+  **Note:** While the Measurement Protocol sends 100% of the data to Google Analytics 4, it may face challenges linking data back to a user or session. The handling of the Client ID and Session ID is managed by Octanist. Events sent through the Measurement Protocol may result in "(not set)" values for source/medium attribution.
+</Warning>
 
 ## 2. How the Measurement Protocol Works
 
