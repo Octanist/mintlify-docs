@@ -13,25 +13,28 @@ description: Synchronize your data with Google Ads to link leads and conversions
 
 1. Go to [octanist.com](https://octanist.com/) and navigate to General > [Manage Conversion Names.](https://octanist.com/organization/settings/)
 
-2. Under '**Manage Conversion Names**' add clear and concise conversion names, for example: *Converted Lead - Octanist*.
+2. Under '**Manage Conversion Names**' add clear and concise conversion names, for example: _Converted Lead - Octanist_.
 
 <Warning>
-  Ensure you choose clear and concise conversion names. These must exactly match the conversion names in Google Ads.
+  Ensure you choose clear and concise conversion names. These must exactly match
+  the conversion names in Google Ads.
 </Warning>
 
-![](/image.png)
+![](/images/google-ads/manange-conversion-names.png)
 
-1. Go to [octanist.com](https://octanist.com/) and navigate to **Integrations > Outgoing**.
+3. Go to [octanist.com](https://octanist.com/) and navigate to **Integrations > Outgoing**.
 
-2. Select **Google Ads**.
+4. Select **Google Ads**.
 
-3. Give the integration a clear and concise name, such as: '*Company Name - Octanist - Google Ads Integration.*'&#x20;
+5. Give the integration a clear and concise name, such as: '_Company Name - Octanist - Google Ads Integration._'&#x20;
 
 <Tip>
-  *This name is for internal use and helps you easily identify the integration, especially if you plan to set up multiple integrations for different Google Ads accounts.*
+  *This name is for internal use and helps you easily identify the integration,
+  especially if you plan to set up multiple integrations for different Google
+  Ads accounts.*
 </Tip>
 
-1. Octanist will generate a unique link. **Save this link carefully, as you will only receive it once.**
+6. Octanist will generate a unique link. **Save this link carefully, as you will only receive it once.**
    The link will look like this:`https://api.octanist.com/integrations/outgoing/googleads/{{Octanist ID}}/?apikey=oct_{{Unique Key}}`
 
 ## 2. Google Ads
@@ -42,15 +45,15 @@ description: Synchronize your data with Google Ads to link leads and conversions
 
 3. Create a new conversion action and select **Import**:
 
-   * Under import, choose **CRMs, files, or other data sources**.
+   - Under import, choose **CRMs, files, or other data sources**.
 
-   * Then select **Conversions from clicks**.
+   - Then select **Conversions from clicks**.
 
-4. When prompted to select a data source, choose *"Skip this step and set up a data source later."*
+4. When prompted to select a data source, choose _"Skip this step and set up a data source later."_
 
 5. In the next step, select **Converted Lead** as the conversion goal.
 
-6. Give this conversion goal a name, for example: *Converted Lead - Octanist*.
+6. Give this conversion goal a name, for example: _Converted Lead - Octanist_.
 
 <Warning>
   *This name must match exactly with the conversion action name in Octanist.*
@@ -66,14 +69,14 @@ description: Synchronize your data with Google Ads to link leads and conversions
 
 2. Open the **Schedules** tab and add a new schedule:
 
-   * Choose *HTTPS* as the source.
+   - Choose _HTTPS_ as the source.
 
-   * Enter the link provided by Octanist in the *Source URL* field.
+   - Enter the link provided by Octanist in the _Source URL_ field.
 
-   * Set *Frequency* to *Weekly on Sunday*.
+   - Set _Frequency_ to _Weekly on Sunday_.
      (Daily synchronization is not necessary unless leads convert within 24 hours.)
 
-   * Choose a preferred time, for example, *0:00*.
+   - Choose a preferred time, for example, _0:00_.
 
 3. Save the schedule.
 

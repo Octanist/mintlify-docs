@@ -25,35 +25,44 @@ description: The Octanist GTM integration makes it easy to send leads to Octanis
 
 6. [Octanist - Outgoing Integration](#5-octanist-outgoing-integration)
 
-***
+---
 
 ## Setup video
 
 Need help setting up octanist? Watch our setup video. For the most up-to-date implementation guide, please follow the written guide below.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/RvQqOv06XZ4?si=q8MwjZp2Y0LfMVIs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/RvQqOv06XZ4?si=q8MwjZp2Y0LfMVIs"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+/>
 
 ## 1. Download the GTM template
 
-* Navigate within Octanist to **Integrations > Incoming**.
-  ![](/images/incoming-gtm-clickonincoming.jpg)
+- Navigate within Octanist to **Integrations > Incoming**.
+  ![](/images/google-tag-manager/incoming-gtm-clickonincoming.jpg)
 
-* Under **Incoming**, select **Google Tag Manager**.
-  ![](/images/incoming-gtm-clickongtm.jpg)
+- Under **Incoming**, select **Google Tag Manager**.
+  ![](/images/google-tag-manager/incoming-gtm-clickongtm.jpg)
 
-* Download the Octanist GTM template (`template.tpl`) to your computer.
-  ![](/images/incoming-gtm-clickondownloadtemplate.jpg)
+- Download the Octanist GTM template (`template.tpl`) to your computer.
+  ![](/images/google-tag-manager/incoming-gtm-clickondownloadtemplate.jpg)
 
-* Copy the **Octanist Organization ID** and save it somewhere. You can always return here to retrieve it again.
-  ![](/images/incoming-gtm-copyoctanistid.jpg)
+- Copy the **Octanist Organization ID** and save it somewhere. You can always return here to retrieve it again.
+  ![](/images/google-tag-manager/incoming-gtm-copyoctanistid.jpg)
 
-***
+---
 
 ## 2. Prepare the Website
 
-* To send lead data to Octanist, the data must be available on the website. We highly recommend using a [**dataLayer**](https://developers.google.com/tag-platform/tag-manager/datalayer) **push event** to ensure consistency and robust measurement.
+- To send lead data to Octanist, the data must be available on the website. We highly recommend using a [**dataLayer**](https://developers.google.com/tag-platform/tag-manager/datalayer) **push event** to ensure consistency and robust measurement.
 
-* Ensure the lead data is placed in the dataLayer. Ask a developer to implement the following code to activate the dataLayer push after a lead form is submitted:
+- Ensure the lead data is placed in the dataLayer. Ask a developer to implement the following code to activate the dataLayer push after a lead form is submitted:
 
 > Dear \[Recipient],&#x20;
 >
@@ -63,15 +72,15 @@ Need help setting up octanist? Watch our setup video. For the most up-to-date im
 
 ```html
 <script>
-var dataLayer = dataLayer || [];
-dataLayer.push({
-  event: 'submit_lead_form',
-  user_data: {
-    email: yourEmailVariable,
-    phone_number: yourPhoneVariable,
-    company_name: yourCompanyVariable // optional
-  }
-});
+  var dataLayer = dataLayer || [];
+  dataLayer.push({
+    event: "submit_lead_form",
+    user_data: {
+      email: yourEmailVariable,
+      phone_number: yourPhoneVariable,
+      company_name: yourCompanyVariable, // optional
+    },
+  });
 </script>
 ```
 
@@ -79,53 +88,53 @@ dataLayer.push({
 >
 > Kind regards,
 
-***
+---
 
 ## 3. Set Up Google Tag Manager
 
 ### 3.1 Create a Workspace
 
-* Click on **Default Workspace**.
+- Click on **Default Workspace**.
 
-* Give the Workspace a name (e.g., *Octanist Setup*).
+- Give the Workspace a name (e.g., _Octanist Setup_).
 
 ### 3.2 Upload the Template
 
-* Go to **Templates > Tag Templates > New**.
+- Go to **Templates > Tag Templates > New**.
 
-* Click on the three dots in the top-right corner, select **Import**, and upload `template.tpl` (downloaded in step 1). Do not change the name of the file.
+- Click on the three dots in the top-right corner, select **Import**, and upload `template.tpl` (downloaded in step 1). Do not change the name of the file.
 
-![](/images/6bbb08b8-0b1b-4eab-83f1-76f051af9fc0.png)
+![](/images/google-tag-manager/6bbb08b8-0b1b-4eab-83f1-76f051af9fc0.png)
 
-* **Save the template**—don't change any settings.
-  ![](/images/850cd330-08af-48a6-a91a-e497b5fc1772.png)
+- **Save the template**—don't change any settings.
+  ![](/images/google-tag-manager/850cd330-08af-48a6-a91a-e497b5fc1772.png)
 
 ### 3.3 Configure the Tag
 
-* Create a new tag: **Octanist - Offline Conversion Tracking**.
-  *After successfully importing the template, the Octanist Tag should appear under the Custom Tab.*
+- Create a new tag: **Octanist - Offline Conversion Tracking**.
+  _After successfully importing the template, the Octanist Tag should appear under the Custom Tab._
 
-* Enter your **Octanist ID**.
+- Enter your **Octanist ID**.
 
-* Add dataLayer variables for email address, phone number, and company name.
+- Add dataLayer variables for email address, phone number, and company name.
 
-* Set the trigger. For example, in step 2 we created an event for the `submit_lead_form` trigger.
+- Set the trigger. For example, in step 2 we created an event for the `submit_lead_form` trigger.
 
 ### 3.4 Test and Publish
 
-* Test the form using the GTM debug mode.
+- Test the form using the GTM debug mode.
 
-* Publish the container once everything works correctly.
+- Publish the container once everything works correctly.
 
-***
+---
 
 ## 4. Optional: Google Analytics 4 (GA4)
 
-* Enter the **GA4 Measurement ID** (e.g., `G-12345678`).
+- Enter the **GA4 Measurement ID** (e.g., `G-12345678`).
 
-* Optionally add extra fields for better lead qualification.
+- Optionally add extra fields for better lead qualification.
 
-***
+---
 
 ## 5. Octanist - Outgoing Integration
 

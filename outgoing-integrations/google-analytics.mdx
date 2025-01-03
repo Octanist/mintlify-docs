@@ -19,7 +19,11 @@ The google analytics 4 (GA4) integration sends your marked closed, open, and con
 This server-to-server solution ensures all quantitative lead data is sent to google analytics 4 and tied to specific channels. No personal or client data is sent to google analytics 4.
 
 <Warning>
-  **Note:** While the Measurement Protocol sends 100% of the data to Google Analytics 4, it may face challenges linking data back to a user or session. The handling of the Client ID and Session ID is managed by Octanist. Events sent through the Measurement Protocol may result in "(not set)" values for source/medium attribution.
+  **Note:** While the Measurement Protocol sends 100% of the data to Google
+  Analytics 4, it may face challenges linking data back to a user or session.
+  The handling of the Client ID and Session ID is managed by Octanist. Events
+  sent through the Measurement Protocol may result in "(not set)" values for
+  source/medium attribution.
 </Warning>
 
 ## 2. How the Measurement Protocol Works
@@ -35,23 +39,27 @@ This server-to-server solution ensures all quantitative lead data is sent to goo
 
 ## 3. Setup Instructions
 
-1. In your Octanist account, go to **Integrations > Outgoing**.  ![](/3.1-3.2IntegrationsoutgoingGA4.png)
+1. In your Octanist account, go to **Integrations > Outgoing**. ![](/images/google-analytics/3-1-3-2-integrations-outgoing.png)
 
 2. Select **google analytics 4**.
 
-3. Fill in a name for the integration (e.g., *Octanist - GA4 Integration*).
+3. Fill in a name for the integration (e.g., _Octanist - GA4 Integration_). ![](/images/google-analytics/3-3-fill-the-name.png)
 
 4. Enter your **GA4 Measurement ID**.
 
-   * This can be found in your GA4 account under **Data Streams**. See [Google's guide](https://support.google.com/analytics/answer/12270356?hl=en) for details.
+   - This can be found in your GA4 account under **Data Streams**. See [Google's guide](https://support.google.com/analytics/answer/12270356?hl=en) for details. ![](/images/google-analytics/3-4-ga4-measurement-id.png)
 
 5. Enter your **GA4 API Key**:
 
-   * In your GA4 Data Stream, click **Measurement Protocol API Secrets**.
+   - In your GA4 Data Stream, click **Measurement Protocol API Secrets**.
 
-   * If still required, press 'Review Terms' and then press 'I Acknowledge' after reading the User Data Collection Acknowledgment.
+   - If still required, press 'Review Terms' and then press 'I Acknowledge' after reading the User Data Collection Acknowledgment.
 
-   * Create a key and give it a clear name (e.g., *Octanist - GA4 Integration*).
+   ![](/images/google-analytics/3-5-measurement-protocol-api-secrets.png)
+
+   - Create a key and give it a clear name (e.g., _Octanist - GA4 Integration_).
+
+   ![](/images/google-analytics/3-5-d-measurement-protocol-api-secrets-copy-secret-value.png)
 
 6. Click **Create google analytics 4 Integration**.
 
@@ -61,15 +69,15 @@ Add the [custom dimensions](https://support.google.com/analytics/answer/14240153
 
 **Enter the custom dimensions as follows:**
 
-* **Dimension Name**: The name of the dimension (e.g., `lead_status`; you can name this as you prefer).
+- **Dimension Name**: The name of the dimension (e.g., `lead_status`; you can name this as you prefer).
 
-* **Description**: A description of the custom dimension (e.g., *"The status of a lead (e.g., 'Called Lead, waiting for follow-up')."*).
+- **Description**: A description of the custom dimension (e.g., _"The status of a lead (e.g., 'Called Lead, waiting for follow-up')."_).
 
-* **Event Parameter**: This must be `lead_status` or `unconvert_lead_reason` for Octanist Insights.
+- **Event Parameter**: This must be `lead_status` or `unconvert_lead_reason` for Octanist Insights.
 
-![](/image.png)
+![](/images/google-analytics/custom-dimension.png)
 
 To improve reporting, mark the `close_convert_lead` event as a **Key Event (Conversion)** in GA4.
 This will help you better understand the user journey and simplify reporting.
 
-![](/image.png)
+![](/images/google-analytics/key-event.png)
