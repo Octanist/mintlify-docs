@@ -11,14 +11,27 @@ description: Synchronize your data with Google Ads to link leads and conversions
 
 ## 1. Octanist
 
+1. Go to [octanist.com](https://octanist.com/) and navigate to General > [Manage Conversion Names.](https://octanist.com/organization/settings/)
+
+2. Under '**Manage Conversion Names**' add clear and concise conversion names, for example: *Converted Lead - Octanist*.
+
+<Warning>
+  Ensure you choose clear and concise conversion names. These must exactly match the conversion names in Google Ads.
+</Warning>
+
+![](/image.png)
+
 1. Go to [octanist.com](https://octanist.com/) and navigate to **Integrations > Outgoing**.
 
 2. Select **Google Ads**.
 
-3. Give the integration a clear and concise name, for example:
-   *Company Name - Octanist - Google Ads Integration*.
+3. Give the integration a clear and concise name, such as: '*Company Name - Octanist - Google Ads Integration.*'&#x20;
 
-4. Octanist will generate a unique link. **Save this link carefully, as you will only receive it once.**
+<Tip>
+  *This name is for internal use and helps you easily identify the integration, especially if you plan to set up multiple integrations for different Google Ads accounts.*
+</Tip>
+
+1. Octanist will generate a unique link. **Save this link carefully, as you will only receive it once.**
    The link will look like this:`https://api.octanist.com/integrations/outgoing/googleads/{{Octanist ID}}/?apikey=oct_{{Unique Key}}`
 
 ## 2. Google Ads
@@ -37,7 +50,11 @@ description: Synchronize your data with Google Ads to link leads and conversions
 
 5. In the next step, select **Converted Lead** as the conversion goal.
 
-6. Give this conversion goal a name, for example: *Octanist - Converted Lead*.> **Note:** This name must match exactly with the conversion action name in Octanist.
+6. Give this conversion goal a name, for example: *Converted Lead - Octanist*.
+
+<Warning>
+  *This name must match exactly with the conversion action name in Octanist.*
+</Warning>
 
 7. Save the conversion action and click **Next**.
 
