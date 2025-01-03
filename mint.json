@@ -58,6 +58,10 @@
         "outgoing-integrations/google-analytics",
         "outgoing-integrations/meta"
       ]
+    },
+    {
+      "group": "User consent",
+      "pages": ["user-consent/consent-mode"]
     }
   ],
   "footerSocials": {
