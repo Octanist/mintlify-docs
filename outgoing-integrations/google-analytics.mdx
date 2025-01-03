@@ -35,29 +35,41 @@ This server-to-server solution ensures all quantitative lead data is sent to goo
 
 ## 3. Setup Instructions
 
-1. In your Octanist account, go to **Integrations > Outgoing**.&#x20; ![](/3.1-3.2IntegrationsoutgoingGA4.png)
+1. In your Octanist account, go to **Integrations > Outgoing**.  ![](/3.1-3.2IntegrationsoutgoingGA4.png)
 
+2. Select **google analytics 4**.
 
+3. Fill in a name for the integration (e.g., *Octanist - GA4 Integration*).
 
-1. Select **google analytics 4**.
-
-2. Fill in a name for the integration (e.g., *Octanist - GA4 Integration*).
-
-3. Enter your **GA4 Measurement ID**.
+4. Enter your **GA4 Measurement ID**.
 
    * This can be found in your GA4 account under **Data Streams**. See [Google's guide](https://support.google.com/analytics/answer/12270356?hl=en) for details.
 
-4. Enter your **GA4 API Key**:
+5. Enter your **GA4 API Key**:
 
    * In your GA4 Data Stream, click **Measurement Protocol API Secrets**.
 
+   * If still required, press 'Review Terms' and then press 'I Acknowledge' after reading the User Data Collection Acknowledgment.
+
    * Create a key and give it a clear name (e.g., *Octanist - GA4 Integration*).
 
-5. Click **Create google analytics 4 Integration**.
+6. Click **Create google analytics 4 Integration**.
 
 ## 4. Reporting in google analytics 4
 
 Add the [custom dimensions](https://support.google.com/analytics/answer/14240153?hl=en) `lead_status` and `unconvert_lead_reason` to view the text values of your notes entered in Octanist.
 
+**Enter the custom dimensions as follows:**
+
+* **Dimension Name**: The name of the dimension (e.g., `lead_status`; you can name this as you prefer).
+
+* **Description**: A description of the custom dimension (e.g., *"The status of a lead (e.g., 'Called Lead, waiting for follow-up')."*).
+
+* **Event Parameter**: This must be `lead_status` or `unconvert_lead_reason` for Octanist Insights.
+
+![](/image.png)
+
 To improve reporting, mark the `close_convert_lead` event as a **Key Event (Conversion)** in GA4.
 This will help you better understand the user journey and simplify reporting.
+
+![](/image.png)
