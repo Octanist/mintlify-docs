@@ -44,7 +44,7 @@
       ]
     },
     {
-      "group": "Incomming integrations",
+      "group": "Incoming integrations",
       "pages": [
         "incoming-integrations/gtm",
         "incoming-integrations/manual",
