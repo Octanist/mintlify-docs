@@ -1,12 +1,14 @@
 ---
 title: "Consent Mode"
-description: "How Octanist works with Consent Mode"
+description: "How Octanist works with Consent Mode."
 ---
 
 ## Table of Contents
 
 1. [Overview](#1-overview)
+
 2. [Google Tag Manager Integration](#2-google-tag-manager-integration)
+
 3. [Adjusting Consent Settings in Octanist](#3-adjusting-consent-settings-in-octanist)
 
 ## 1. Overview
@@ -17,7 +19,7 @@ At Octanist, we prioritize your privacy and the privacy of your leads. To align 
 
 Starting in March 2024, EU regulations mandate the use of Google Consent Mode for advertisers. This requires platforms like Google to receive consent signals to verify that the data they process has been legitimately collected.
 
-For offline conversion imports, user consent is necessary for their data to be attributed to campaigns and uploaded. If a user denies marketing cookies and consent, the Click ID can still be uploaded but will be modeled instead of attributed as a conversion.
+For offline conversion imports, **user consent is necessary** for their data to be attributed to campaigns and uploaded. If a user denies marketing cookies and consent, the Click ID can still be uploaded but will be modeled instead of attributed as a conversion.
 
 Octanist implements methods to ensure that your offline imports and converted leads comply with Google Consent Mode.
 
@@ -27,8 +29,9 @@ Octanist implements methods to ensure that your offline imports and converted le
 
 More information:
 
-- [Google Consent Mode Overview](https://support.google.com/google-ads/answer/10000067?hl=en)
-- [Google Consent Mode V2 (Dutch)](https://www.jorgvandeven.nl/blog/google-consent-mode-v2-verplicht-2024/?utm_source=docs.octanist.com&utm_medium=referral&utm_campaign=octanist_docs)
+* [Google Consent Mode Overview](https://support.google.com/google-ads/answer/10000067?hl=en)
+
+* [Google Consent Mode V2 (Dutch)](https://www.jorgvandeven.nl/blog/google-consent-mode-v2-verplicht-2024/?utm_source=docs.octanist.com\&utm_medium=referral\&utm_campaign=octanist_docs)
 
 ## 2. Google Tag Manager Integration
 
@@ -38,20 +41,19 @@ In our Google Tag Manager template ([Download](https://octanist.com/api/download
 
 1. **Google Consent Mode (default)**
 
-   If you have implemented Google Consent Mode using a certified CMP (e.g., Cookiebot or CookieYes) or a Consent Mode Tag Template (e.g., [Simo Ahava’s Consent Mode Template](https://www.simoahava.com/custom-templates/consent-mode/)), the Octanist Tag Template will respect user consent and automatically set "Granted" or "Denied" accordingly.
-
-   ![](images/meta-facebook/meta-outgoing-connection-setup.jpg)
+If you have implemented Google Consent Mode using a certified CMP (e.g., [Cookiebot](https://www.cookiebot.com/) or [CookieYes](https://www.cookieyes.com/welcome/?ref=njuwmjq)) or a Consent Mode Tag Template (e.g., [Simo Ahava’s Consent Mode Template](https://www.simoahava.com/custom-templates/consent-mode/)), the Octanist Tag Template will respect user consent and automatically set "Granted" or "Denied" accordingly.![](images/consent-mode/consent-mode-octanist-option.jpg)
 
 2. **Manual Consent Settings**
 
-   If you do not use Google Consent Mode, you can set custom consent variables. These variables should return "true" or "false" based on whether the user has provided consent.
+If you do not use Google Consent Mode, you can set custom consent variables. These variables should return "true" or "false" based on whether the user has provided consent.![](images/consent-mode/consent-mode-manual-consent-settings.png)
 
 ## 3. Adjusting Consent Settings in Octanist
 
 Octanist allows you to adjust consent settings for previously collected leads if necessary. For instance, this can be useful if:
 
-- Consent Mode was not implemented at the time of collection, but you ensured consent was collected manually.
-- A cookie banner malfunctioned, preventing appropriate consent signals from being set.
+* Consent Mode was not implemented at the time of collection, but you ensured consent was collected manually.
+
+* A cookie banner malfunctioned, preventing appropriate consent signals from being set.
 
 ### Steps to Adjust Consent Settings
 
@@ -64,5 +66,7 @@ Octanist allows you to adjust consent settings for previously collected leads if
 <Warning>
   **Recommendation:** Verify that all leads being sent were legitimately collected with user consent. Use this feature sparingly and prioritize using Google Consent Mode or manual consent settings.
 </Warning>
+
+![](images/consent-mode/consent-mode-consented-leads-google-ads.jpg)
 
 By following these guidelines, you ensure compliance with privacy regulations and maintain the integrity of your advertising data.
