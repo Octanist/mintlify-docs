@@ -16,7 +16,9 @@ description: "Send offline conversions to Meta to optimize your campaigns, reduc
 The Meta Ads Integration uses the Conversion API to send converted leads to Meta. This integration leverages the `_fbc` and `_fbp` cookies to link your converted leads back to their original campaigns and ad interactions.
 
 <Warning>
-  **Important:** Converted leads that occurred before setting up the integration cannot be sent to Meta. Only leads marked as "Winner" after the connection is established will be transmitted.
+  **Important:** Converted leads that occurred before setting up the integration
+  cannot be sent to Meta. Only leads marked as "Winner" after the connection is
+  established will be transmitted.
 </Warning>
 
 ## 2. Setup Instructions
@@ -25,9 +27,9 @@ The Meta Ads Integration uses the Conversion API to send converted leads to Meta
 
 1. Go to [Octanist](https://octanist.com/) and navigate to **General > Manage Conversion Names**.
 
-2. Under **Manage Conversion Names**, add clear and descriptive names for your conversions (e.g., *Converted Lead - Octanist*). If needed, create new conversion names. These will appear in your Meta Events Manager.
+2. Under **Manage Conversion Names**, add clear and descriptive names for your conversions (e.g., _Converted Lead - Octanist_). If needed, create new conversion names. These will appear in your Meta Events Manager.
 
-![](/images/google-ads/manage-conversion-names.png)
+![](/images/google-ads/manange-conversion-names.png)
 
 ### Step 2: Set Up the Meta Ads Integration
 
@@ -37,28 +39,30 @@ The Meta Ads Integration uses the Conversion API to send converted leads to Meta
 
 3. Fill in the following details:
 
-   * **Name:** Choose a name for the integration (e.g., *Octanist - Meta Integration*).
+   - **Name:** Choose a name for the integration (e.g., _Octanist - Meta Integration_).
 
-   * **Pixel ID:** Find this in your Meta Business Manager under:
+   - **Pixel ID:** Find this in your Meta Business Manager under:
 
-     * **Events Manager > Data Sources > Your Meta Pixel > Copy Pixel ID**.![](images/meta-facebook/meta-find-meta-pixel-id.jpg)
+     - **Events Manager > Data Sources > Your Meta Pixel > Copy Pixel ID**.![](/images/meta-facebook/meta-find-meta-pixel-id.jpg)
 
-   * **Access Token:** Obtain this in your Meta Business Manager:
+   - **Access Token:** Obtain this in your Meta Business Manager:
 
-     * **Events Manager > Data Sources > Your Meta Pixel > Generate or Copy Access Token**.![](images/meta-facebook/meta-find-and-generate-access-token.jpg)
+     - **Events Manager > Data Sources > Your Meta Pixel > Generate or Copy Access Token**.![](/images/meta-facebook/meta-find-and-generate-access-token.jpg)
 
 <Warning>
-  **Security Note:** Your Access Token is sensitive information that enables direct data transmission to your Meta Ad account. Keep it secure and only share it with trusted platforms.
+  **Security Note:** Your Access Token is sensitive information that enables
+  direct data transmission to your Meta Ad account. Keep it secure and only
+  share it with trusted platforms.
 </Warning>
 
-* **Original Event Name:** Specify the event name that generated the original lead (e.g., *Lead*, *Contact*, or *Request Quotation*). This helps link converted leads back to their originating event.
+- **Original Event Name:** Specify the event name that generated the original lead (e.g., _Lead_, _Contact_, or _Request Quotation_). This helps link converted leads back to their originating event.
 
-In the end the field should look something like this:![](images/meta-facebook/meta-outgoing-connection-setup.jpg)
+In the end the field should look something like this:![](/images/meta-facebook/meta-outgoing-connection-setup.jpg)
 
 ## 3. Monitoring Data in Meta
 
 Once the integration is set up, monitor the data flow in Meta by navigating to:
 
-* **Events Manager > Data Sources > Your Meta Pixel > Overview**.
+- **Events Manager > Data Sources > Your Meta Pixel > Overview**.
 
 Check for correct data transmission and review performance metrics to ensure proper tracking and optimization of your campaigns.

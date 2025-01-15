@@ -24,14 +24,16 @@ For offline conversion imports, **user consent is necessary** for their data to 
 Octanist implements methods to ensure that your offline imports and converted leads comply with Google Consent Mode.
 
 <Warning>
-  **Note:** If no consent settings are provided (via Google Consent Mode or manual settings), leads are automatically marked as "Denied" and cannot be attributed to Google Ads campaigns or ads.
+  **Note:** If no consent settings are provided (via Google Consent Mode or
+  manual settings), leads are automatically marked as "Denied" and cannot be
+  attributed to Google Ads campaigns or ads.
 </Warning>
 
 More information:
 
-* [Google Consent Mode Overview](https://support.google.com/google-ads/answer/10000067?hl=en)
+- [Google Consent Mode Overview](https://support.google.com/google-ads/answer/10000067?hl=en)
 
-* [Google Consent Mode V2 (Dutch)](https://www.jorgvandeven.nl/blog/google-consent-mode-v2-verplicht-2024/?utm_source=docs.octanist.com\&utm_medium=referral\&utm_campaign=octanist_docs)
+- [Google Consent Mode V2 (Dutch)](https://www.jorgvandeven.nl/blog/google-consent-mode-v2-verplicht-2024/?utm_source=docs.octanist.com&utm_medium=referral&utm_campaign=octanist_docs)
 
 ## 2. Google Tag Manager Integration
 
@@ -41,19 +43,19 @@ In our Google Tag Manager template ([Download](https://octanist.com/api/download
 
 1. **Google Consent Mode (default)**
 
-If you have implemented Google Consent Mode using a certified CMP (e.g., [Cookiebot](https://www.cookiebot.com/) or [CookieYes](https://www.cookieyes.com/welcome/?ref=njuwmjq)) or a Consent Mode Tag Template (e.g., [Simo Ahava’s Consent Mode Template](https://www.simoahava.com/custom-templates/consent-mode/)), the Octanist Tag Template will respect user consent and automatically set "Granted" or "Denied" accordingly.![](images/consent-mode/consent-mode-octanist-option.jpg)
+If you have implemented Google Consent Mode using a certified CMP (e.g., [Cookiebot](https://www.cookiebot.com/) or [CookieYes](https://www.cookieyes.com/welcome/?ref=njuwmjq)) or a Consent Mode Tag Template (e.g., [Simo Ahava’s Consent Mode Template](https://www.simoahava.com/custom-templates/consent-mode/)), the Octanist Tag Template will respect user consent and automatically set "Granted" or "Denied" accordingly.![](/images/consent-mode/consent-mode-octanist-option.jpg)
 
 2. **Manual Consent Settings**
 
-If you do not use Google Consent Mode, you can set custom consent variables. These variables should return "true" or "false" based on whether the user has provided consent.![](images/consent-mode/consent-mode-manual-consent-settings.png)
+If you do not use Google Consent Mode, you can set custom consent variables. These variables should return "true" or "false" based on whether the user has provided consent.![](/images/consent-mode/consent-mode-manual-consent-settings.png)
 
 ## 3. Adjusting Consent Settings in Octanist
 
 Octanist allows you to adjust consent settings for previously collected leads if necessary. For instance, this can be useful if:
 
-* Consent Mode was not implemented at the time of collection, but you ensured consent was collected manually.
+- Consent Mode was not implemented at the time of collection, but you ensured consent was collected manually.
 
-* A cookie banner malfunctioned, preventing appropriate consent signals from being set.
+- A cookie banner malfunctioned, preventing appropriate consent signals from being set.
 
 ### Steps to Adjust Consent Settings
 
@@ -64,9 +66,11 @@ Octanist allows you to adjust consent settings for previously collected leads if
 3. Enable the option to set all converted leads sent to Google Ads and Google Analytics to "Consent Granted."
 
 <Warning>
-  **Recommendation:** Verify that all leads being sent were legitimately collected with user consent. Use this feature sparingly and prioritize using Google Consent Mode or manual consent settings.
+  **Recommendation:** Verify that all leads being sent were legitimately
+  collected with user consent. Use this feature sparingly and prioritize using
+  Google Consent Mode or manual consent settings.
 </Warning>
 
-![](images/consent-mode/consent-mode-consented-leads-google-ads.jpg)
+![](/images/consent-mode/consent-mode-consented-leads-google-ads.jpg)
 
 By following these guidelines, you ensure compliance with privacy regulations and maintain the integrity of your advertising data.
