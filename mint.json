@@ -47,6 +47,7 @@
       "group": "Incoming integrations",
       "pages": [
         "incoming-integrations/gtm",
+        "incoming-integrations/wordpress",
         "incoming-integrations/manual",
         "incoming-integrations/import"
       ]
