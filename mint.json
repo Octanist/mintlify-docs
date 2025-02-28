@@ -57,7 +57,9 @@
       "pages": [
         "outgoing-integrations/google-ads",
         "outgoing-integrations/google-analytics",
-        "outgoing-integrations/meta"
+        "outgoing-integrations/meta",
+        "outgoing-integrations/linkedin",
+        "outgoing-integrations/gtm-server"
       ]
     },
     {
