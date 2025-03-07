@@ -35,13 +35,7 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": [
-        "introduction",
-        "quickstart",
-        "general-settings",
-        "members",
-        "billing"
-      ]
+      "pages": ["introduction", "quickstart"]
     },
     {
       "group": "Incoming integrations",
