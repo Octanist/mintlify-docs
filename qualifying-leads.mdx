@@ -1,0 +1,96 @@
+---
+title: "Qualifying your Leads"
+description: "Learn how to Qualify your Leads in Octanist."
+---
+
+Lead qualification is the bread and butter of Octanist. Understanding how it works is crucial. In this article, we explain how you can qualify your leads with Octanist. This is essential for assigning value to your leads and linking them back to your campaigns.
+
+---
+
+## Table of Contents
+
+1. [Getting Leads in Octanist – Incoming Integrations](#1-getting-leads-in-octanist--incoming-integrations)
+2. [Sending Lead Value to Campaigns – Outgoing Integrations](#2-sending-lead-value-to-campaigns--outgoing-integrations)
+3. [Qualifying Your Leads](#3-qualifying-your-leads)
+4. [Lead Actions](#4-lead-actions)
+5. [Expired Leads](#5-expired-leads)
+
+---
+
+## 1. Getting Leads in Octanist – Incoming Integrations
+
+To qualify leads, they first need to exist in Octanist. There are different ways to bring in leads. Please refer to our [Incoming Integrations](https://docs.octanist.com/incoming-integrations/) guide to set this up.
+
+If you're having trouble, feel free to reach out to [**support@octanist.com**](mailto:support@octanist.com) — we’re here to help.
+
+---
+
+## 2. Sending Lead Value to Campaigns – Outgoing Integrations
+
+Before you begin qualifying leads, we recommend setting up your **Outgoing Integrations** first.
+
+Some platforms like [**Meta**](https://docs.octanist.com/outgoing-integrations/meta) and [**Google Analytics**](https://docs.octanist.com/outgoing-integrations/google-analytics) do not support backdating data. This means that if you qualify leads _before_ setting up the integration, those conversions will not be sent to the platform.
+
+Set up your outgoing connections in our [Outgoing Integrations](https://docs.octanist.com/outgoing-integrations/) section.
+
+---
+
+## 3. Qualifying Your Leads
+
+Once your **Incoming** and **Outgoing Integrations** are configured, and your leads are visible in Octanist, you’re ready to start qualifying them.
+
+1. Go to **Leads** and click on the [**Open**](https://octanist.com/leads/open/) tab.
+2. Select a lead you want to qualify.
+
+If the person or company has converted — for example, they purchased a product — enter the **value** of that conversion (e.g., €10,000).
+
+Next, assign a **Conversion Name** to this lead. For example: _"Converted Lead"_.\
+You can manage and edit conversion names in [General Settings](https://octanist.com/organization/settings/).
+
+> ⚠️ This name must **exactly match** the one used in your ad platform (e.g., Google Ads), so make it clear and consistent.
+
+Once all fields are filled out, press **Winner**.\
+This sends the conversion value and name to the ad platforms linked in your Outgoing Integrations.
+
+> 🛡️ **Note**: We do _not_ send your lead’s personal data to these platforms. Only conversion information is shared.
+
+The lead will now move to the [**Won**](https://octanist.com/leads/won/) category.
+
+If the lead **did not convert**, press **Loser**.\
+These leads will be moved to the Lose category.
+
+If enabled in [General Settings](https://octanist.com/organization/settings/), you can also select **Qualified Lead**.\
+This is useful for leads that haven’t converted yet but are relevant to your business. These leads:
+
+- Show buying intent or interest.
+- Can be sent to ad platforms to help optimize your targeting.
+- Help signal that your ads are generating quality leads, even if they haven’t purchased yet.
+
+---
+
+## 4. Lead Actions
+
+Under each lead, you’ll also find additional actions:
+
+- **Note**: Add internal notes to track communication or follow-ups (e.g., _“Called the lead, they’ll respond in 2 weeks”_).
+- **Details**: View lead metadata such as:
+  - When the lead came in
+  - Through which channel
+  - On which URL it originated
+- **Delete**: You can delete leads, though it’s not recommended.\
+  Only delete test leads or duplicates.\
+  Keeping all real leads (even unqualified ones) helps improve campaign targeting and enhances the insights in your [Octanist Dashboard](https://octanist.com/dashboard/).
+
+---
+
+## 5. Expired Leads
+
+Under the [**Expired**](https://octanist.com/leads/expired/) tab in the Leads section, you’ll find leads that haven’t been qualified within 90 days.
+
+Why this matters:
+
+- For many ad platforms (e.g., Google Ads), click or conversion tracking **expires after 90 days**.
+- After that, Octanist can no longer attribute a conversion to a campaign.
+
+These leads become **obsolete**, meaning the link between the click and the lead is lost.\
+To avoid this, make sure to **qualify leads regularly and on time**.
