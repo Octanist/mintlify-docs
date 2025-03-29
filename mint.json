@@ -52,9 +52,14 @@
         "outgoing-integrations/google-ads",
         "outgoing-integrations/google-analytics",
         "outgoing-integrations/meta",
+        "outgoing-integrations/microsoft-ads",
         "outgoing-integrations/linkedin",
         "outgoing-integrations/gtm-server"
       ]
+    },
+    {
+      "group": "Updating integrations",
+      "pages": ["updating-integrations/recruitee"]
     },
     {
       "group": "User consent",
@@ -62,6 +67,7 @@
     }
   ],
   "footerSocials": {
-    "linkedin": "https://www.linkedin.com/company/octanist"
+    "linkedin": "https://www.linkedin.com/company/octanist",
+    "website": "https://octanist.com"
   }
 }

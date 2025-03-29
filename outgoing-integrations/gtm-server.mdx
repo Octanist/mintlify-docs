@@ -6,7 +6,8 @@ description: "Send your closed, open, and converted leads to your Server-Side Go
 Server-Side Tagging is a powerful tool in your marketing analytics toolbox. With a Server-Side Google Tag Manager (sGTM) container, marketing and analytics specialists gain full control over the data sent to various platforms. With Octanist, you can use your qualified leads to build or modify integrations tailored to your setup.
 
 <Note>
-  **Note:** This is an advanced integration. General knowledge of Server-Side Tagging and data matching is required.
+  **Note:** This is an advanced integration. General knowledge of Server-Side
+  Tagging and data matching is required.
 </Note>
 
 ### Prerequisites
@@ -40,18 +41,24 @@ This guide walks you through sending qualified leads from Octanist to your Serve
 ### Advanced Debugging (Optional)
 
 1. Under **Advanced Options**, enter your **X-Gtm-Server-Preview HTTP header**. This allows you to debug hits in the Server Container.
+
    - To find your header, enter **Debug Mode** in your server container.
    - Click the three dots in the top-right corner, then select **Send Request Manually**.
 
-   ![Sending requests to the Server-Side Google Tag Manager container for Octanist](/image.png)
+   ![Sending requests to the Server-Side Google Tag Manager container for Octanist](/images/gtm-server-container/sgtm-secret-copy.png)
+
    - Copy the value under **X-Gtm-Server-Preview HTTP header**.
 
-   ![Copy HTTP header](/images/outgoing-integration-sgtm-copy-X-Gtm-Server-Preview-HTTP-header.png)
+   ![Copy HTTP header](/images/gtm-server-container/outgoing-integration-sgtm-copy-X-Gtm-Server-Preview-HTTP-header.png)
+
 2. Paste this value under **Advanced \> X-Gtm-Server-Preview HTTP header** in Octanist.
 3. Click **Create Server Integration**, then download the **sGTM Octanist Client Template**.
 
 <Note>
-  When downloading the sGTM Client Template, you are receiving the most up-to-date version. Google Tag Manager does not currently provide a template gallery for Server-Side Clients. This client is stable and unlikely to require future updates.
+  When downloading the sGTM Client Template, you are receiving the most
+  up-to-date version. Google Tag Manager does not currently provide a template
+  gallery for Server-Side Clients. This client is stable and unlikely to require
+  future updates.
 </Note>
 
 ---
@@ -61,18 +68,21 @@ This guide walks you through sending qualified leads from Octanist to your Serve
 1. In your Server Container, create a new **Workspace** (e.g., _Octanist - Server-Side Setup_).
 2. Navigate to **Templates \> Client Templates \> New**.
 
-   ![Create new Octanist Client Template](/images/outgoing-integration-sgtm-create-new-octanist-client.png)
+   ![Create new Octanist Client Template](/images/gtm-server-container/outgoing-integration-sgtm-create-new-octanist-client.png)
+
 3. Click the three dots in the top-right corner, then select **Import**.
 4. Upload the `template.tpl` file you downloaded earlier.
 
-   ![Upload Octanist Client Template](/images/outgoing-integration-sgtm-upload-new-octanist-client.png)
+   ![Upload Octanist Client Template](/images/gtm-server-container/outgoing-integration-sgtm-upload-new-octanist-client.png)
+
 5. After uploading, **do not make any changes**. Simply click **Save**.
 
-   ![Save uploaded client](/images/outgoing-integration-sgtm-uploaded-octanist-client-press-save.png)
+   ![Save uploaded client](/images/gtm-server-container/outgoing-integration-sgtm-uploaded-octanist-client-press-save.png)
+
 6. Go to the **Clients** menu, click **New**, then select the **Octanist Client Template**.
 7. No further configuration is needed. Click **Save**.
 
-   ![Create Octanist Client](/images/outgoing-integration-sgtm-create-octanist-client.png)
+   ![Create Octanist Client](/images/gtm-server-container/outgoing-integration-sgtm-create-octanist-client.png)
 
 ---
 
@@ -89,33 +99,42 @@ From here, you can route the data to any supported platform using your server-si
 Piwik Pro is a popular alternative to Google Analytics 4 and can run in parallel. This example demonstrates how to use the Octanist sGTM integration with Piwik Pro — though similar steps can be followed for other platforms like Adform, Mailchimp, or Awin.
 
 <Note>
-  Most platforms require a **Match Key** to associate Octanist leads with previous sessions. For example, if you’re using a `User ID` or `Client ID` in GA4, Piwik Pro, or Adform, you must map the same ID in your payload to maintain attribution.
+  Most platforms require a **Match Key** to associate Octanist leads with
+  previous sessions. For example, if you’re using a `User ID` or `Client ID` in
+  GA4, Piwik Pro, or Adform, you must map the same ID in your payload to
+  maintain attribution.
 </Note>
 
 ### Steps:
 
 1. In your Server Container, create a new **Trigger**.
+
    - Choose **Custom Trigger**
    - Set **Client Name Equals Octanist**
    - Save the trigger
 
-   ![Octanist Client Trigger](/images/outgoing-integration-sgtm-octanist-client-trigger.png)
+   ![Octanist Client Trigger](/images/gtm-server-container/outgoing-integration-sgtm-octanist-client-trigger.png)
+
 2. Go to **Templates \> Tag Templates \> Search Gallery**.
+
    - Search and select the official **Piwik Pro** template.
 
-   ![Select Piwik Pro Template](/images/outgoing-integration-sgtm-piwik-pro.png)
+   ![Select Piwik Pro Template](/images/gtm-server-container/outgoing-integration-sgtm-piwik-pro.png)
+
 3. Create a new **Piwik Pro Tag** using the template.
+
    - Fill in the appropriate **Custom Variables** (e.g., Session ID, Client ID)
    - Add the **Octanist Trigger** to fire this tag.
 
    > 📘 For a complete setup, refer to [Simo Ahava’s guide on server-side tagging with Piwik Pro](https://www.simoahava.com/analytics/ga4-to-piwik-pro-using-server-side-google-tag-manager/).
 
-   ![Configure Piwik Pro Tag](/images/outgoing-integration-sgtm-piwik-pro-tag-setup-octanist.png)
+   ![Configure Piwik Pro Tag](/images/gtm-server-container/outgoing-integration-sgtm-piwik-pro-tag-setup-octanist.png)
+
 4. Open your **sGTM Debugger**, and qualify a lead in Octanist (e.g., mark as Won or Lost and include a value).
 
    You should see a `converted_lead` event appear as an incoming HTTP request to `/octanist`, which is then processed by the Octanist Client and forwarded to Piwik Pro.
 
-   ![Debugging request to Piwik Pro](/images/outgoing-integration-sgtm-piwik-pro-debug-octanist-request.png)
+   ![Debugging request to Piwik Pro](/images/gtm-server-container/outgoing-integration-sgtm-piwik-pro-debug-octanist-request.png)
 
 ---
 
