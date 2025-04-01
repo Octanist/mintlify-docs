@@ -2,3 +2,94 @@
 title: "Microsoft Ads"
 description: "Setup a Microsoft Ads integration to send your leads to Microsoft Ads"
 ---
+
+With the Microsoft Ads integration, you can send qualified leads from Octanist using Microsoft Click ID matching. This integration uses the **Import from Clicks** functionality — similar to Google Ads — to upload your offline conversions to Microsoft Ads.
+
+<Note>
+  **Note:** This is an advanced integration. Familiarity with Microsoft Ads conversion tracking and lead attribution is required.
+</Note>
+
+### Prerequisites
+
+- A [Microsoft Ads account](https://ads.microsoft.com/)
+- An Octanist [**Serious Business**](https://octanist.com/pricing/) package
+
+## Table of Contents
+
+1. [Setting Up in Octanist](#1-setting-up-in-octanist)
+2. [Creating a Conversion Goal in Microsoft Ads](#2-creating-a-conversion-goal-in-microsoft-ads)
+3. [Scheduling Offline Conversion Uploads](#3-scheduling-offline-conversion-uploads)
+
+---
+
+## 1. Setting Up in Octanist
+
+1. Go to [octanist.com](https://octanist.com/) and navigate to [**General \> Manage Conversion Names**](https://octanist.com/organization/settings/).
+2. Under **Manage Conversion Names**, add clear and concise conversion names. For example: _Converted Lead - Octanist_.
+
+<Warning>
+  Use clear and consistent conversion names. These **must exactly match** the conversion names used in your Microsoft Ads account.
+
+  \
+  You may reuse conversion names already used in other integrations.
+</Warning>
+
+1. Go to **Integrations \> Outgoing**.
+2. Select **Microsoft Ads**.
+3. Name your integration clearly, such as: _Company Name - Octanist - Microsoft Ads_.
+4. Once saved, you'll receive a unique URL — **copy and save this**, as you'll need it when setting up the upload in Microsoft Ads.
+
+![Outgoing Integrations Microsoft Ads Add Integration Pn](/images/outgoing-integrations-microsoft-ads-add-integration.png)
+
+---
+
+## 2. Creating a Conversion Goal in Microsoft Ads
+
+Once your outgoing integration is created in Octanist, switch to your Microsoft Ads account.
+
+1. Navigate to **Tools \> Conversion Tracking**, then select **\+ Conversion Goal**.
+2. Choose the following options:
+   - **Conversion Goal Type:** Offline
+   - **Goal Category:** Submit Lead Forms
+   - **Name:** Use the **exact same name** as in Octanist (e.g., _Converted Lead - Octanist_)
+
+<Warning>
+  The conversion goal name in Microsoft Ads must exactly match the one defined in Octanist.
+</Warning>
+
+3. Under **Revenue**, set your **Conversion Action Value** (e.g., 1 EUR or your preferred value).
+4. Under **Advanced Settings**, set:
+   - **Include in Conversions?** → No
+
+<Note>
+  We recommend not including the goal in conversions initially. Activate this once you’ve collected at least 30 converted leads for better optimization.
+</Note>
+
+5. Under **Enhanced Conversions**, select **Disable** (you can enable this later if desired).
+
+![Outgoing Integrations Microsoft Ads Create Conversion Pn](/images/outgoing-integrations-microsoft-ads-create-conversion.png)
+
+---
+
+## 3. Scheduling Offline Conversion Uploads
+
+After creating the conversion goal, you’re ready to schedule automatic uploads of converted leads.
+
+1. In your Microsoft Ads account, navigate to **Tools \> Conversion Tracking \> Offline Conversions**.
+
+![Outgoing Integrations Microsoft Ads Add Schedule Pn](/images/outgoing-integrations-microsoft-ads-add-schedule.png)
+
+2. Click **Schedule** to automate data uploads.
+   - Paste the unique URL provided by Octanist.
+   - Choose your **upload frequency** (we recommend daily or weekly).
+   - Click **Save and Preview** to validate the setup.
+
+<Note>
+  Scheduling uploads ensures that Octanist leads are regularly synced with Microsoft Ads without manual intervention.
+</Note>
+
+![Outgoing Integrations Microsoft Ads Add File Url Pn](/images/outgoing-integrations-microsoft-ads-add-file-url.png)
+
+---
+
+You’ve now completed the Microsoft Ads integration with Octanist\! Your converted leads will be automatically uploaded using the Microsoft Click ID and matched as offline conversions.
