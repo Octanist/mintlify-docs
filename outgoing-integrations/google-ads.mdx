@@ -32,7 +32,16 @@ The Google Ads integration uses the **Import from Clicks** functionality in Goog
   Ads accounts.
 </Tip>
 
-1. Octanist will generate a unique link. **Save this link carefully, as you will only receive it once.**\
+**Advanced:**
+
+Under the advanced section of this integration, you will find two optional options:
+
+**Manual Consent:** Enable this option if you want to manually override the consent settings of leads, setting it to "Granted". We recommend leaving this disabled. It should only be enabled when you've encountered issues with consent settings. Please refer to our [Consent Mode documentation](https://docs.octanist.com/user-consent/consent-mode) to learn more.
+
+[**Enhanced Conversions for Leads**](https://support.google.com/google-ads/answer/11021502?hl=en)**:** Enabling this option sends hashed [first-party data](https://support.google.com/adspolicy/answer/6242605?hl=en) to Google Ads using SHA-256 hashing. When enabling this option, make sure to also enable it in Google Ads by navigating to:\
+**Goals \> Settings \> Enhanced Conversions for Leads \> Managed through Google Tag Manager**.
+
+4. Octanist will generate a unique link. **Save this link carefully, as you will only receive it once.**\
    The link will look like this:\
    `https://api.octanist.com/integrations/outgoing/googleads/{{Octanist ID}}/?apikey=oct_{{Unique Key}}`
 
@@ -46,28 +55,22 @@ The Google Ads integration uses the **Import from Clicks** functionality in Goog
    _We will add a data source later._
 
    ![Google Ads Outgoing Integration Conversions Offline Connection](/images/ads-google/google-ads-outgoing-integration-conversions-offline-connection.png)
-
 4. Create a **Converted Lead** conversion.
 
    ![Google Ads Outgoing Integration Create Converted Lead](/images/ads-google/google-ads-outgoing-integration-create-converted-lead.png)
-
 5. Add a new conversion action.
 6. Click on **Settings** of the new conversion action:
-
    - Give it a concise name, e.g., _Octanist - Converted Lead_.
 
      <Warning>
        This name must match exactly with the conversion action name in Octanist.
      </Warning>
-
    - Set it as a **Primary** or **Secondary** conversion depending on your preferences (this can be changed later).
 
    ![Google Ads Outgoing Integration Conversion Settings](/images/ads-google/google-ads-outgoing-integration-conversion-settings.png)
-
 7. Once done, save your settings and continue the setup until you reach the final confirmation screen.
 
    ![Google Ads Outgoing Integration Conversions Finished](/images/ads-google/google-ads-outgoing-integration-conversions-finished.png)
-
 8. Next, we'll configure the **Data Source (Uploads)** that sends your conversions from Octanist to Google Ads.
 
 ### Configuring Uploads
