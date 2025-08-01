@@ -1,32 +1,329 @@
 ---
-title: "New file"
-description: "Description of your new file."
+title: "Google BigQuery"
+description: "Send your closed, open, and converted leads to Google BigQuery for advanced data analysis."
 ---
 
-Klant moet zorgen voor
+## Table of Contents
 
-Console Cloud Project aanzetten met BigQuery
+1. [BigQuery Setup](#1-bigquery-setup)\
+   1.1 [Project and Billing](#11-project-and-billing)\
+   1.2 [Enabling APIs and Permissions](#12-enabling-apis-and-permissions)\
+   1.3 [Creating a Dataset and Table](#13-creating-a-dataset-and-table)\
+   1.4 [Schema and Table Expiration](#14-schema-and-table-expiration)
+2. [Octanist Setup](#2-octanist-setup)
 
-BigQuery API aanzetten 
+---
 
-Billing inschakelen.
+## 1. BigQuery Setup
 
-BigQuery:
+### 1.1 Project and Billing
 
-**Make sure this Google Accounts has the correct BigQuery permissions; we suggest BigQuery Admin**
+Before setting up Google BigQuery for Octanist, you need a BigQuery environment with billing enabled. Don’t worry — the cost is typically between €0–€1 per month for storing data.
 
-**If you have can access the right BigQuery table with you current Google Account, then you have sufficient permissions.**
+1. Go to [Google BigQuery](https://console.cloud.google.com/bigquery).
+2. Sign in with the Google account you want to associate with the BigQuery environment. We recommend using a client-owned account or one that the client can always access.
+3. Create or select a project. Use a clear and concise name — you can't change it later.
+4. Select the appropriate organization (usually your business or your client's), then click **Create**.
 
-1. Create a new dataset
-2. Create a table
-3. Add the right Schema to the Table, please refer to the code below. Just Copy Paste
+![Create BigQuery Project](/images/google-bigquery-outgoing-integration-create-bigquery-project.jpg)
 
-**Octanist:**
+Search for **Billing** and open it. You must set up a billing account to enable and use specific APIs required by Google BigQuery.
 
-**Connect with the Google Account that has access to BigQuery project you want to use**
+Next, search for **BigQuery API**, open it, and click **Enable**. A green checkmark will confirm activation.
 
-**Enter the fields in Octanist and you're there.**
+![Enable BigQuery API](/images/google-bigquery-outgoing-integration-enable-bigquery-api.jpg)
 
-**Al your next incoming leads, will now be sent to BigQuery.**
+### 1.2 Enabling APIs and Permissions
 
-If you want historical leads, we can create an export for you, by sending it to support@octanist.com.
+Now, search for **IAM & Admin**, and click **Grant Access**.
+
+![Grant Access](/images/google-bigquery-outgoing-integration-grant-access.jpg)
+
+Add relevant users (e.g., your team, your agency’s email, your client). Assign the **Owner** or **BigQuery Admin** role so they can manage the lead data and perform analysis.
+
+![Add Roles](/images/google-bigquery-outgoing-integration-add-roles.jpg)
+
+Return to the search bar, search for **BigQuery**, and click it to open the BigQuery Studio.
+
+![Open BigQuery Studio](/images/google-bigquery-outgoing-integration-bigquery-searchbar.jpg)
+
+### 1.3 Creating a Dataset and Table
+
+1. In BigQuery Studio, click the three dots next to your project name and select **Create dataset**.
+
+![Create Dataset](/images/google-bigquery-outgoing-integration-create-dataset.jpg)
+
+2. Enter a **Dataset ID** (e.g., `octanist_dataset`). This cannot be changed later.
+3. Choose a **Region** close to your business (e.g., a region containing "europe" or the "EU" multi-region).
+
+![Dataset ID and Region](/images/google-bigquery-outgoing-integration-create-dataset-id-and-region.jpg)
+
+Once the dataset is created:
+
+1. Click the three dots next to the dataset name and choose **Create table**.
+
+![Create Table](/images/google-bigquery-outgoing-integration-create-table.jpg)
+
+2. In the Create Table menu:
+   - Select **Empty table**.
+   - Ensure the project and dataset are filled in correctly.
+   - Enter a **Table Name** (e.g., `export_bigquery_integration` or `exported_leads_octanist`).
+3. Scroll down to **Partitioning Settings**:
+   - Set **Partition by ingestion time**
+   - Choose **By day**
+
+This keeps the dataset manageable and cost-efficient.
+
+4. Scroll up to **Schema**, switch to **Edit as text**, and paste the schema below:
+
+```json
+
+[
+  {
+    "name": "id",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Lead unique identifier"
+  },
+  {
+    "name": "organizationId",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Organization ID that owns this lead"
+  },
+  {
+    "name": "name",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Lead name"
+  },
+  {
+    "name": "email",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Lead email address"
+  },
+  {
+    "name": "phone",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Lead phone number"
+  },
+  {
+    "name": "custom",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Custom field data"
+  },
+  {
+    "name": "gclid",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Google Click ID"
+  },
+  {
+    "name": "fbc",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Facebook Click ID"
+  },
+  {
+    "name": "fbp",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Facebook Browser ID"
+  },
+  {
+    "name": "ga4cid",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Google Analytics 4 Client ID"
+  },
+  {
+    "name": "ga4sid",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Google Analytics 4 Session ID"
+  },
+  {
+    "name": "li_fat_id",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "LinkedIn First Party Ad Tracking ID"
+  },
+  {
+    "name": "msclkid",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Microsoft Click ID"
+  },
+  {
+    "name": "path",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Website path where lead was generated"
+  },
+  {
+    "name": "website",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Website domain"
+  },
+  {
+    "name": "ad_storage",
+    "type": "BOOLEAN",
+    "mode": "NULLABLE",
+    "description": "Google Consent Mode - Ad Storage"
+  },
+  {
+    "name": "ad_user_data",
+    "type": "BOOLEAN",
+    "mode": "NULLABLE",
+    "description": "Google Consent Mode - Ad User Data"
+  },
+  {
+    "name": "ad_personalization",
+    "type": "BOOLEAN",
+    "mode": "NULLABLE",
+    "description": "Google Consent Mode - Ad Personalization"
+  },
+  {
+    "name": "analytics_storage",
+    "type": "BOOLEAN",
+    "mode": "NULLABLE",
+    "description": "Google Consent Mode - Analytics Storage"
+  },
+  {
+    "name": "status",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Lead status: new, open, win, lost, expired, archived"
+  },
+  {
+    "name": "note",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Notes about the lead"
+  },
+  {
+    "name": "utm_source",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "UTM source parameter"
+  },
+  {
+    "name": "utm_medium",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "UTM medium parameter"
+  },
+  {
+    "name": "utm_campaign",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "UTM campaign parameter"
+  },
+  {
+    "name": "value",
+    "type": "FLOAT",
+    "mode": "NULLABLE",
+    "description": "Lead value"
+  },
+  {
+    "name": "currency",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Currency code (ISO 4217)"
+  },
+  {
+    "name": "conversionName",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Conversion name/type"
+  },
+  {
+    "name": "createdAt",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE",
+    "description": "When the lead was originally created"
+  },
+  {
+    "name": "updatedAt",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE",
+    "description": "When the lead was last updated"
+  },
+  {
+    "name": "labelId",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Associated label ID"
+  },
+  {
+    "name": "leadOfTheMonth",
+    "type": "INTEGER",
+    "mode": "NULLABLE",
+    "description": "Lead of the month counter"
+  },
+  {
+    "name": "qualifiedAt",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE",
+    "description": "When the lead was qualified"
+  },
+  {
+    "name": "event_type",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Event type: win, qualified, lost"
+  },
+  {
+    "name": "event_timestamp",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE",
+    "description": "When the event was sent to BigQuery"
+  }
+]
+```
+
+After this is set up, click **Create Table**. The settings should look as follows:
+
+![Table Settings](/images/image.png)
+
+Lastly, before switching back to Octanist, click on the dataset (the square icon with four dots), then click **Edit Details** in the top right.\
+\
+Uncheck **Enable table expiration**. Make sure this option is disabled, otherwise, your data will be deleted after 60 days.
+
+![Disable Table Expiry](/images/google-bigquery-outgoing-integration-edit-table-expiry.jpg)
+
+## Octanist
+
+Now head back to Octanist and create a new outgoing integration:\
+👉 [Create Integration](https://octanist.com/integrations/outgoing/new/)
+
+1. Select **Google BigQuery**.
+2. Enter a clear and concise name for the integration.
+3. Under **Google Connection**, click **Connect** and log in using the Google account with the necessary BigQuery permissions (as set in the IAM & Admin section above).
+
+> Note: A second window may open during the authentication process. If it does, complete the setup in that window, then close it. This is related to Google Authentication and will be improved in future updates.
+
+4. Enter your:
+   - **Project name**
+   - **Dataset ID**
+   - **Table name**
+
+The final setup should look like this:
+
+![Octanist Setup](/images/bigquery-octanist-outgoing-integration-setup-octanist.png)
+
+Once configured, you can start qualifying your leads — these will be automatically sent to BigQuery.
+
+### The following lead statuses will be sent to BigQuery:
+
+- **Won Leads**
+- **Qualified Leads**
+- **Lost Leads**
+
+Each lead includes a timestamp, allowing you to calculate the time it takes for a lead to convert to a sale.
+
+If you’d like to export historical leads, we can provide that. Just send your request to [support@octanist.com](mailto:support@octanist.com).
