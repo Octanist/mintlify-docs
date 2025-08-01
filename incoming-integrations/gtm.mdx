@@ -125,11 +125,29 @@ _Please note that you do not need to upload the GTM template manually; you can o
 
 ---
 
-## 4. Optional: Google Analytics 4 (GA4)
+## 4 Optional
+
+### 4.1 Google Analytics 4 (GA4)
 
 - Enter the **GA4 Measurement ID** (e.g., `G-12345678`).
+- Optionally, add extra fields for better lead qualification.
 
-- Optionally add extra fields for better lead qualification.
+### 4.2 Marketing Campaign Data
+
+- Enter custom UTM parameters saved in a GTM variable.
+- You can extract these parameters with the help of your web developer or technical web analyst.
+- These parameters will be visible in the dashboard under **Source / Medium / Campaign**.
+
+### 4.3 Consent
+
+- By default, Google Consent Mode is used to determine the user's consent preferences. If you have implemented this, you do not need to change this setting.
+- You can also use the **Manual Consent Setting**, which allows you to pass your own consent parameters. Please return them as `Granted` or `Denied` — use exactly this format and capitalization.
+- For more details, refer to our [Consent Documentation](https://docs.octanist.com/user-consent/consent-mode).
+
+### 4.4 Custom Domain Delivery
+
+- By default, leave this field blank.
+- Here, you can add a custom domain for your Octanist environment. This feature is only available upon request via [support@octanist.com](mailto:support@octanist.com).
 
 ---
 
