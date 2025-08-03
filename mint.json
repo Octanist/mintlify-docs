@@ -54,6 +54,7 @@
         "outgoing-integrations/meta",
         "outgoing-integrations/microsoft-ads",
         "outgoing-integrations/linkedin",
+        "outgoing-integrations/google-bigquery",
         "outgoing-integrations/gtm-server"
       ]
     },
