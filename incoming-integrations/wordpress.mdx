@@ -1,31 +1,19 @@
 ---
-title: Wordpress
-description: The Octanist Wordpress integration makes it easy to send leads to Octanist. Follow these steps to quickly set up the integration.
+title: WordPress
+description: Connect your WordPress forms to Octanist for seamless offline conversion tracking. Automatically capture form submissions from popular form plugins and send them to your Octanist account.
 ---
 
-<Warning>
-  This plugin is currently in beta. Look at the table below which Wordpress form
-  plugins are supported. If you experience any issues or want help with setup of
-  the plugin, please contact us at support@octanist.com.
-</Warning>
-
-## Table of Contents
-
-1. [Compatibility](#compatibility)
-2. [Download the Wordpress plugin](#download-the-wordpress-plugin)
-3. [Configure the plugin](#configure-the-plugin)
-4. [Test and Publish](#test-and-publish)
-5. [Octanist - Outgoing Integration](#octanist-outgoing-integration)
-
----
-
-## 1. Compatibility
+The Octanist WordPress plugin connects your website forms directly to the Octanist platform, enabling automatic offline conversion tracking. It captures form submissions from popular form plugins, and with the help of our field mapping, maps field data according to your settings, and sends it to your Octanist account for comprehensive marketing attribution.
 
 <Warning>
-  This plugin is currently in beta. Look at the table below which Wordpress form
-  plugins are supported. If you experience any issues, please contact us at
-  support@octanist.com.
+  Field tracking can be complex depending on your form setup and field naming
+  conventions. Our support team is ready to help you configure field mappings
+  correctly. Contact us at support@octanist.com for assistance.
 </Warning>
+
+## Compatibility
+
+Here is the list of supported form plugins, we are continuously adding more to the list. If you don't see your form plugin here, please contact us at support@octanist.com.
 
 | Wordpress form plugin | Supported without captcha | Supported with captcha | Easy field mapping |
 | :-------------------- | :-----------------------: | :--------------------: | :----------------: |
@@ -39,50 +27,190 @@ description: The Octanist Wordpress integration makes it easy to send leads to O
 | Ninja forms           |            ❌             |           ❌           |         ❌         |
 | Gravity forms         |            ❌             |           ❌           |         ❌         |
 
-## 2. Download the Wordpress plugin
+<Info>
+  For unsupported forms, you can enable tracking by adding the CSS class `octanist-form` to your `<form>` element.
+</Info>
 
-- Navigate within Octanist to **Integrations > Incoming**.
+## Installation
 
-- Under **Incoming**, select **Wordpress**.
+### Install the plugin
 
-- Download the Octanist Wordpress plugin to your computer.
+1. In your WordPress dashboard, navigate to **Plugins > Add New**
+2. In the search bar, type "Octanist" and press Enter
+3. Find the Octanist plugin in the search results and click **Install Now**
+   ![WordPress Plugin Directory](/images/wordpress/wordpress-install-octanist.jpg)
+4. Once installation is complete, click **Activate**
 
-- Copy the **Octanist Organization ID** and save it somewhere. You can always return here to retrieve it again.
+### Get Octanist ID
 
----
+1. In your Octanist account dashboard, navigate to **Integrations > Incoming**
+2. Under **Incoming**, select **WordPress**
+   ![WordPress Octanist ID](/images/wordpress/dashboard-click-integration-button.jpg)
+3. Copy the **Octanist ID**
+   ![WordPress Octanist ID](/images/wordpress/dashboard-copy-organization-id.jpg)
 
-## 3. Install the plugin
+### Initial Configuration
 
-- Navigate to your Wordpress website and go to **Plugins > Add New**.
+1. Once activated, go to **Settings > Octanist** in your WordPress dashboard
+   ![WordPress Plugin Settings](/images/wordpress/wordpress-settings-octanist.jpg)
+2. Enter your **Octanist ID** (that you copied in the previous step)
+   ![WordPress Octanist ID Input](/images/wordpress/wordpress-octanist-id-input.jpg)
+3. Click **Save Changes**
+   ![WordPress Save Changes](/images/wordpress/wordpress-save-changes.jpg)
 
-- Click on **Upload Plugin** and select the **Octanist Wordpress plugin** you downloaded earlier.
+The plugin is now active, but you'll need to configure field mappings for proper data collection.
 
-- Install and activate the plugin.
-
----
-
-## 4. Configure the plugin
-
-- Navigate to **Octanist > Settings** and enter the **Octanist Organization ID** you saved earlier.
-
-- Now you have to do some field mapping. Take the name of each element and map it to the corresponding field in Octanist.
+## Field Mappings
 
 <Warning>
-  Field mapping is different for each form plugin. We will update our
-  documentation soon to include field mapping for each form plugin. For now,
-  please contact us at support@octanist.com if you need help with field mapping.
+  Field tracking can be complex depending on your form setup and field naming
+  conventions. Our support team is ready to help you configure field mappings
+  correctly. Contact us at support@octanist.com for assistance.
 </Warning>
 
-- Click on **Save Settings**.
+### Understanding Field Mapping
 
----
+Different form plugins use different technical names for their fields. For example, a "Full Name" field might be named `your-name`, `full_name`, or `text-123` in the code. Field mapping tells the Octanist plugin which of your form's field names correspond to standard data fields in Octanist.
 
-## 5. Test and Publish
+### Configuration Steps
 
-- Test the form and see if the data is being sent to Octanist.
+In the **Field Mappings** section of the plugin settings:
 
----
+1. **Name Field**: Enter the exact `name` attribute of fields containing user names
+2. **Email Field**: Enter the field name for email addresses
+3. **Phone Field**: Enter the field name for phone numbers
+4. **Custom Field**: Map any additional fields you want to capture
 
-## 6. Octanist - Outgoing Integration
+<Tip>
+  Click **+ Add Field** to map multiple field names to the same data type. This
+  is useful when you have different forms using different field names for the
+  same purpose.
+</Tip>
 
-Your data stream is now active! For setting up outgoing integrations, refer to our [Outgoing Integrations](https://docs.octanist.com/outgoing-integrations/google-ads/) documentation.
+![WordPress Field Mappings](/images/wordpress/wordpress-field-mapping.jpg)
+
+### Finding Field Names
+
+The most reliable way to find field names is using your browser's developer tools:
+
+1. Open the page with your form in a new browser tab
+2. Right-click directly on the form field you want to map
+3. Select **Inspect** from the context menu
+4. Look for the `name` attribute in the highlighted HTML code, the code code look something like this:
+   ![WordPress Field Name](/images/wordpress/inspect-full-input.jpg)
+5. Copy the value inside the quotes (e.g., `name="your-name"` → use `your-name`)
+   ![WordPress Field Name](/images/wordpress/inspect-name.jpg)
+
+**Example HTML:**
+
+```html
+<input
+  type="text"
+  name="your-name"
+  value=""
+  size="40"
+  class="wpcf7-form-control"
+  placeholder="Your Name"
+/>
+```
+
+You would use `your-name` in your field mapping.
+
+<Warning>
+  This can be a complex process. Contact us at support@octanist.com for
+  assistance. We would be happy to help you configure field mappings correctly.
+</Warning>
+
+### Handling Multiple Fields
+
+**Combining First and Last Name:**
+
+- Form has fields: `first-name` and `last-name`
+- In Name Fields mapping: Add both `first-name` and `last-name`
+- Plugin automatically combines them when forms are submitted
+
+**Different Forms with Different Names:**
+
+- Contact form uses: `contact-name`
+- Quote form uses: `quote-name`
+- In Name Fields mapping: Add both field names
+- Plugin treats both as "Name" data
+
+## Advanced Settings
+
+### Data Transmission Options
+
+- **Send data to Octanist**: Master switch to enable/disable data sending to Octanist API
+- **Send data to (GTM) Datalayer**: Push form data to Google Tag Manager's dataLayer
+
+When GTM integration is enabled, data is pushed with this structure:
+
+```javascript
+{
+  "event": "submit_lead_form",
+  "user_data": {
+    "email": "user@example.com",
+    "phone_number": "+1234567890",
+    "company_name": "John Doe",
+    "custom": "Custom field data"
+  }
+}
+```
+
+### Debug Mode
+
+Enable **Debug Mode** to print diagnostic information to your browser's developer console. This helps troubleshoot tracking issues but should only be enabled when necessary.
+
+## Testing & Validation
+
+1. Fill out and submit a test form on your website
+2. Check your Octanist dashboard for the new lead data
+3. If using Debug Mode, check browser console for "Octanist Debug" messages
+4. Verify field mappings are working correctly
+
+## Troubleshooting
+
+### Forms Not Being Tracked
+
+<AccordionGroup>
+  <Accordion title="Check Plugin Status">
+    - Verify the Octanist ID is entered correctly
+    - Ensure "Send data to Octanist" is enabled
+    - Confirm the plugin is activated
+  </Accordion>
+  
+  <Accordion title="Verify Form Plugin Support">
+    - Check if your form plugin is in the compatibility table
+    - For unsupported forms, add `octanist-form` CSS class to the `<form>` element
+    - Enable Debug Mode to see console messages
+  </Accordion>
+  
+  <Accordion title="Field Mapping Issues">
+    - Field names must match exactly (case-sensitive)
+    - Use browser inspection to verify field names
+    - Check for typos in field mapping configuration
+  </Accordion>
+</AccordionGroup>
+
+### Data Appears Incorrect
+
+- **Combined fields**: Multiple fields mapped to the same type are separated by a pipe (`|`) symbol
+- **Missing data**: Verify all required fields are properly mapped
+- **Wrong values**: Double-check field name mapping using browser inspection
+
+<Warning>
+  If you're experiencing persistent issues with field mapping or data
+  collection, don't hesitate to contact our support team at
+  support@octanist.com. We're here to help you get your tracking set up
+  correctly.
+</Warning>
+
+## Next Steps
+
+Your WordPress integration is now active! To complete your conversion tracking setup:
+
+1. **Test thoroughly**: Submit several test forms to verify data collection
+2. **Set up outgoing integrations**: Connect Octanist to your advertising platforms
+3. **Monitor data flow**: Check your Octanist dashboard regularly for incoming leads
+
+For setting up outgoing integrations, refer to our [Outgoing Integrations](/outgoing-integrations/google-ads) documentation.

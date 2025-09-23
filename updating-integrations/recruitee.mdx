@@ -15,13 +15,14 @@ The Recruitee integration allows you to synchronize candidate pipeline movements
 1. Go to [Octanist](https://octanist.com/) and navigate to [**Integrations \> Updating \> Add New**].
 2. Choose **Recruitee** and click **Add Integration**.
 
-![Recruitee Octanist Add Integration Pn](/images/recruitee-octanist-add-integration.png)
+![Recruitee Octanist Add Integration Pn](/images/recruitee/recruitee-octanist-add-integration.png)
 
 3. Fill in the **Webhook Secret** (you will retrieve this from Recruitee in the next step).
 4. Choose a clear and concise **name** for the integration, such as _Recruitee - Octanist - Your Organization Name_.
 
 <Tip>
-  This name is for internal use only and helps you identify the integration within Octanist.
+  This name is for internal use only and helps you identify the integration
+  within Octanist.
 </Tip>
 
 5. Fill in the **pipeline stage name** used for qualification.
@@ -32,7 +33,7 @@ The Recruitee integration allows you to synchronize candidate pipeline movements
 
 6. **Before you click "Create Recruitee Integration"**, copy and save the **POST URL** that appears.
 
-![Recruitee Create Recruiteeintegration Pn](/images/recruitee-create-recruiteeintegration.png)
+![Recruitee Create Recruiteeintegration Pn](/images/recruitee/recruitee-create-recruiteeintegration.png)
 
 7. Then click **Create Recruitee Integration**.
 
@@ -41,25 +42,25 @@ The Recruitee integration allows you to synchronize candidate pipeline movements
 1. Go to [Recruitee](https://app.recruitee.com/) and log in.
 
    <img
-     src="/images/recruitee-click-on-settings.png"
+     src="/images/recruitee/recruitee-click-on-settings.png"
      alt="Recruitee Click On Settings Pn"
      title="Recruitee Click On Settings Pn"
-     style={{ width:"35%" }}
+     style={{ width: "35%" }}
    />
 
 2. Click the **Settings** icon in the top-right corner.
 
 <img
-  src="/images/recruitee-app-and-plugins.png"
+  src="/images/recruitee/recruitee-app-and-plugins.png"
   alt="Recruitee App And Plugins Pn"
   title="Recruitee App And Plugins Pn"
-  style={{ width:"58%" }}
+  style={{ width: "58%" }}
 />
 
 3. In the left sidebar, scroll down to **Apps and Plugins** and click **Webhooks**.
 4. Find the **Secret** and click **Show Secret**.
 
-![download.png](/images/download.png)
+![webhook.png](/images/recruitee/recruitee-webhook-secret.png)
 
 <Warning>
   You may be asked to verify your identity before revealing the secret.
@@ -69,22 +70,23 @@ The Recruitee integration allows you to synchronize candidate pipeline movements
 6. Return to Octanist and **paste the Webhook Secret** into the corresponding field.
 7. Continue filling in the other fields, but **do not create the integration** yet.
 
-![Octanist Recruitee Fill In The Integrations Fields Pn](/images/octanist-recruitee-fill-in-the-integrations-fields.png)
+![Octanist Recruitee Fill In The Integrations Fields Pn](/images/recruitee/octanist-recruitee-fill-in-the-integrations-fields.png)
 
 8. **Copy the POST URL** and paste it into Recruitee. You can **now create the Recruitee integration**.
 
-![Recruitee Add Recruitee Incoming Integration Copy Pn](/images/recruitee-add-recruitee-incoming-integration-copy.png)
+![Recruitee Add Recruitee Incoming Integration Copy Pn](/images/recruitee/recruitee-add-recruitee-incoming-integration-copy.png)
 
 9. Back in Recruitee, click **New Webhook**.
 
-![Recruitee Click New Webhook Pn](/images/recruitee-click-new-webhook.png)
+![Recruitee Click New Webhook Pn](/images/recruitee/recruitee-click-new-webhook.png)
 
 10. Fill out the fields:
-   - **Name**: for internal use only (e.g., _Octanist Recruitee - Your Organization Name_)
-   - **URL**: paste the **POST URL** copied from Octanist
-   - **Event**: select **Only the Move on pipeline**
 
-![Recruitee Webhook Fill In The Fields Pn](/images/recruitee-webhook-fill-in-the-fields.png)
+- **Name**: for internal use only (e.g., _Octanist Recruitee - Your Organization Name_)
+- **URL**: paste the **POST URL** copied from Octanist
+- **Event**: select **Only the Move on pipeline**
+
+![Recruitee Webhook Fill In The Fields Pn](/images/recruitee/recruitee-webhook-fill-in-the-fields.png)
 
 11. Click **Verify and Create**.
 

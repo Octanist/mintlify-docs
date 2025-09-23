@@ -25,44 +25,44 @@ Before setting up Google BigQuery for Octanist, you need a BigQuery environment 
 3. Create or select a project. Use a clear and concise name, you **can't change it** later.
 4. Select the appropriate organization (usually your business or your client's), then click **Create**.
 
-![Create BigQuery Project](/images/google-bigquery-outgoing-integration-create-bigquery-project.jpg)
+![Create BigQuery Project](/images/google-bigquery/google-bigquery-outgoing-integration-create-bigquery-project.jpg)
 
 Search for **Billing** and open it. You must set up a billing account to enable and use specific APIs required by Google BigQuery.
 
 Next, search for **BigQuery API**, open it, and click **Enable**. A green checkmark will confirm activation.
 
-![Enable BigQuery API](/images/google-bigquery-outgoing-integration-enable-bigquery-api.jpg)
+![Enable BigQuery API](/images/google-bigquery/google-bigquery-outgoing-integration-enable-bigquery-api.jpg)
 
 ### 1.2 Enabling APIs and Permissions
 
 Now, search for **IAM & Admin**, and click **Grant Access**.
 
-![Grant Access](/images/google-bigquery-outgoing-integration-grant-access.jpg)
+![Grant Access](/images/google-bigquery/google-bigquery-outgoing-integration-grant-access.jpg)
 
 Add relevant users (e.g., your team, your agency’s email, your client). Assign the **Owner** or **BigQuery Admin** role so they can manage the lead data and perform analysis.
 
-![Add Roles](/images/google-bigquery-outgoing-integration-add-roles.jpg)
+![Add Roles](/images/google-bigquery/google-bigquery-outgoing-integration-add-roles.jpg)
 
 Return to the search bar, search for **BigQuery**, and click it to open the BigQuery Studio.
 
-![Open BigQuery Studio](/images/google-bigquery-outgoing-integration-bigquery-searchbar.jpg)
+![Open BigQuery Studio](/images/google-bigquery/google-bigquery-outgoing-integration-bigquery-searchbar.jpg)
 
 ### 1.3 Creating a Dataset and Table
 
 1. In BigQuery Studio, click the three dots next to your project name and select **Create dataset**.
 
-![Create Dataset](/images/google-bigquery-outgoing-integration-create-dataset.jpg)
+![Create Dataset](/images/google-bigquery/google-bigquery-outgoing-integration-create-dataset.jpg)
 
 2. Enter a **Dataset ID** (e.g., `octanist_dataset`). This cannot be changed later.
 3. Choose a **Region** close to your business (e.g., a region containing "europe" or the "EU" multi-region).
 
-![Dataset ID and Region](/images/google-bigquery-outgoing-integration-create-dataset-id-and-region.jpg)
+![Dataset ID and Region](/images/google-bigquery/google-bigquery-outgoing-integration-create-dataset-id-and-region.jpg)
 
 Once the dataset is created:
 
 1. Click the three dots next to the dataset name and choose **Create table**.
 
-![Create Table](/images/google-bigquery-outgoing-integration-create-table.jpg)
+![Create Table](/images/google-bigquery/google-bigquery-outgoing-integration-create-table.jpg)
 
 2. In the Create Table menu:
    - Select **Empty table**.
@@ -77,7 +77,6 @@ This keeps the dataset manageable and cost-efficient.
 4. Scroll up to **Schema**, switch to **Edit as text**, and paste the schema below:
 
 ```json
-
 [
   {
     "name": "id",
@@ -288,13 +287,13 @@ This keeps the dataset manageable and cost-efficient.
 
 After this is set up, click **Create Table**. The settings should look as follows:
 
-![Table Settings](/images/image.png)
+![Table Settings](/images/google-bigquery/google-bigquery-create-table.png)
 
 Lastly, before switching back to Octanist, click on the dataset (the square icon with four dots), then click **Edit Details** in the top right.\
 \
 Uncheck **Enable table expiration**. Make sure this option is disabled, otherwise, your data will be deleted after 60 days.
 
-![Disable Table Expiry](/images/google-bigquery-outgoing-integration-edit-table-expiry.jpg)
+![Disable Table Expiry](/images/google-bigquery/google-bigquery-outgoing-integration-edit-table-expiry.jpg)
 
 ## Octanist
 
@@ -313,7 +312,7 @@ Now head back to Octanist and create a new outgoing integration: [Create Integra
 
 The final setup should look like this:
 
-![Octanist Setup](/images/bigquery-octanist-outgoing-integration-setup-octanist.png)
+![Octanist Setup](/images/google-bigquery/bigquery-octanist-outgoing-integration-setup-octanist.png)
 
 Once configured, you can start qualifying your leads — these will be automatically sent to BigQuery.
 
