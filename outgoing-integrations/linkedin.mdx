@@ -1,4 +1,81 @@
 ---
 title: "LinkedIn Ads"
-description: "Setup a LinkedIn Ads integration to send your leads to LinkedIn Ads"
+description: "Set up a LinkedIn Ads integration to send your qualified and converted leads to LinkedIn Ads."
 ---
+
+The LinkedIn Ads integration uses the **Offline Conversions API**, allowing Octanist to automatically upload qualified and converted leads into LinkedIn Ads for better campaign optimization.
+
+## Table of Contents
+
+1. [Overview](#1-overview)
+2. [Setup in Octanist](#2-setup-in-octanist)
+3. [Setup in LinkedIn Ads](#3-setup-in-linkedin-ads)
+4. [Finalize Connection](#4-finalize-connection)
+
+---
+
+## 1. Overview
+
+The integration connects Octanist directly with LinkedIn’s **Offline Conversions API**. This ensures that your conversions are sent securely to LinkedIn Ads, where they can be used for reporting and optimization.
+
+---
+
+## 2. Setup in Octanist
+
+1. Go to [octanist.com](https://octanist.com/) and navigate to **Integrations \> Outgoing**.
+2. Select **LinkedIn**.
+3. Give the integration a clear and descriptive name, for example: _Company Name – Octanist – LinkedIn Integration_.
+
+<Tip>
+  This name is for internal use only. It helps you quickly identify the integration, especially if you plan to set up multiple LinkedIn Ads accounts.
+</Tip>
+
+Leave this tab open, you’ll return here later to enter details from LinkedIn.
+
+---
+
+## 3. Setup in LinkedIn Ads
+
+ 1. Go to [LinkedIn Campaign Manager](https://www.linkedin.com/campaignmanager/accounts) and select the account where you want to track offline conversions.
+ 2. In the left-hand menu, navigate to **Measurement \> Conversions**.
+ 3. Click **Create Conversion \> Conversion API**.
+ 4. Configure your conversion action:
+    - Choose a **Category** (we recommend _Purchase_).
+    - Set a **Default Value** (e.g., 1).
+
+      ![Create Conversion Linkedin Offline Conversion Tracking Pn](/images/create-conversion-linkedin-offline-conversion-tracking.png)
+ 5. Under **Source**, select **Direct API** and click **Next Step**.
+
+    ![Source Conversion Linkedin Offline Conversion Tracking Pn](/images/source-conversion-linkedin-offline-conversion-tracking.png)
+ 6. Complete the setup steps and create your conversion action.
+ 7. Once created, go back to **Conversions**.
+    - You will see the status **Waiting for Activity**. Press "Confirm your settings".
+
+      ![Linkedin Confirm Settings Offline Conversion Tracking Pn](/images/linkedin-confirm-settings-offline-conversion-tracking.png)
+ 8. In the **Direct API Access Token** section, click **Generate Access Token**.
+    - You may be asked to sign in again.
+    - Copy the generated token and paste it into the **Access Token** field in Octanist.
+
+      ![Generate Linkedin Access Token Offline Conversion Tracking Pn](/images/generate-linkedin-access-token-offline-conversion-tracking.png)
+ 9. Next, go back to **Conversions Overview** in LinkedIn and open the conversion you just created.
+10. In the URL, locate the **Conversion Rule ID**. It looks like this:
+
+> https://www.linkedin.com/campaignmanager/accounts/{account-id}/conversions/{conversion-rule-id}?businessId=personal
+
+![Conversion Rule Id Linkedin Offline Conversion Tracking Pn](/images/conversion-rule-id-linkedin-offline-conversion-tracking.png)
+
+Copy the **Conversion Rule ID** (the numeric part) and paste it into the **Conversion Rule ID** field in Octanist.
+
+---
+
+## 4. Finalize Connection
+
+1. Return to Octanist.
+2. Paste the **Access Token** and **Conversion Rule ID** into the LinkedIn integration setup.
+3. Click **Save**.
+
+![Linkedin Final Result Offline Conversion Tracking Pn](/images/linkedin-final-result-offline-conversion-tracking.png)
+
+Your LinkedIn Offline Conversions API integration is now active! Octanist will automatically upload your qualified and converted leads to LinkedIn Ads.
+
+If you need assistance, please reach out to [support@octanist.com](mailto:support@octanist.com).
