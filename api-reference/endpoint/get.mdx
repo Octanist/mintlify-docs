@@ -17,14 +17,14 @@ Retrieve a list of leads with optional filtering and sorting. Perfect for pollin
 ### Get all open leads
 
 ```bash
-curl -X GET "https://yourdomain.com/api/leads?status=open" \
+curl -X GET "https://octanist.com/api/leads?status=open" \
   -H "X-API-KEY: your_api_key_here"
 ```
 
 ### Poll for recently updated leads (Zapier trigger)
 
 ```bash
-curl -X GET "https://yourdomain.com/api/leads?updated_after=2024-01-15T10:00:00Z&sort=updated_at:asc" \
+curl -X GET "https://octanist.com/api/leads?updated_after=2024-01-15T10:00:00Z&sort=updated_at:asc" \
   -H "X-API-KEY: your_api_key_here"
 ```
 
