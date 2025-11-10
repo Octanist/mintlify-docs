@@ -60,16 +60,21 @@
         "tab": "API Reference",
         "groups": [
           {
-            "group": "API Documentation",
+            "group": "Overview",
             "pages": [
               "api-reference/introduction",
               "api-reference/authentication"
             ]
           },
           {
-            "group": "Endpoints",
+            "group": "Authentication",
             "pages": [
-              "api-reference/endpoint/check",
+              "api-reference/endpoint/check"
+            ]
+          },
+          {
+            "group": "Leads",
+            "pages": [
               "api-reference/endpoint/get",
               "api-reference/endpoint/create",
               "api-reference/endpoint/delete"
