@@ -1,0 +1,44 @@
+---
+title: "Check API Key"
+openapi: "POST /api/check"
+---
+
+Validate your API key to ensure it's working correctly. This is useful for testing your integration and troubleshooting authentication issues.
+
+## Usage
+
+This endpoint requires no request body - just include your API key in the `X-API-KEY` header.
+
+```bash
+curl -X POST "https://yourdomain.com/api/check" \
+  -H "X-API-KEY: your_api_key_here"
+```
+
+## Response
+
+### Success
+
+If your API key is valid:
+
+```json
+{
+  "success": true
+}
+```
+
+### Error
+
+If your API key is invalid or missing:
+
+```json
+{
+  "error": "Invalid or missing API key"
+}
+```
+
+## Common Use Cases
+
+- **Integration Testing**: Verify your API key before making other API calls
+- **Health Checks**: Include in monitoring to ensure your API access is working
+- **Troubleshooting**: Quick way to test if authentication issues are API key related
+- **Setup Validation**: Confirm API key configuration in new environments

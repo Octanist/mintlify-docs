@@ -1,4 +1,116 @@
 ---
-title: 'Delete Plant'
-openapi: 'DELETE /plants/{id}'
+title: "Update Lead"
+openapi: "PATCH /api/leads"
 ---
+
+Update a lead's status, value, or note. You can find leads by ID, email, or phone number.
+
+## Finding Leads
+
+Provide at least one identifier:
+
+- `id` - Lead ID (most efficient)
+- `email` - Lead email address
+- `phone` - Lead phone number
+
+If multiple identifiers are provided, the system will use them in order of preference: ID → email → phone.
+
+## Status Changes
+
+### Mark as Won
+
+```json
+{
+  "id": "lead_123",
+  "changedTo": "won",
+  "value": 15000,
+  "note": "Closed deal - annual subscription",
+  "alsoQualified": true
+}
+```
+
+**Requirements:**
+
+- Must include `value` (lead value)
+- Lead must have a `currency` (set during creation or previous update)
+- Set `alsoQualified: true` to also mark the lead as qualified
+
+### Mark as Qualified
+
+```json
+{
+  "email": "customer@example.com",
+  "changedTo": "qualified",
+  "value": 5000,
+  "note": "Qualified during discovery call"
+}
+```
+
+**Requirements:**
+
+- Must include `value` (lead value)
+
+### Mark as Lost
+
+```json
+{
+  "phone": "+1234567890",
+  "changedTo": "lost",
+  "note": "Not interested at this time"
+}
+```
+
+**Requirements:**
+
+- No additional requirements
+
+## Example Usage
+
+### Update by lead ID
+
+```bash
+curl -X PATCH "https://yourdomain.com/api/leads" \
+  -H "X-API-KEY: your_api_key_here" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "id": "lead_123",
+    "changedTo": "won",
+    "value": 10000,
+    "note": "Closed via phone call"
+  }'
+```
+
+### Find and update by email
+
+```bash
+curl -X PATCH "https://yourdomain.com/api/leads" \
+  -H "X-API-KEY: your_api_key_here" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "jane@example.com",
+    "changedTo": "qualified",
+    "value": 5000,
+    "note": "Qualified during demo"
+  }'
+```
+
+## Response
+
+Returns success confirmation with lead details:
+
+```json
+{
+  "success": true,
+  "leadId": "lead_123",
+  "status": "won"
+}
+```
+
+If the lead is not found:
+
+```json
+{
+  "success": false,
+  "message": "Lead not found"
+}
+```

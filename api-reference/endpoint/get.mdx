@@ -1,4 +1,40 @@
 ---
-title: 'Get Plants'
-openapi: 'GET /plants'
+title: "Get Leads"
+openapi: "GET /api/leads"
 ---
+
+Retrieve a list of leads with optional filtering and sorting. Perfect for polling integrations like Zapier.
+
+## Query Parameters
+
+- **status** (optional): Filter by lead status (`open`, `win`, or `lost`)
+- **updated_after** (optional): ISO 8601 date string. Returns leads updated after this date
+- **sort** (optional): Sort order (`updated_at:desc` or `updated_at:asc`, default: `updated_at:desc`)
+- **limit** (optional): Number of leads to return (1-100, default: 100)
+
+## Example Usage
+
+### Get all open leads
+
+```bash
+curl -X GET "https://yourdomain.com/api/leads?status=open" \
+  -H "X-API-KEY: your_api_key_here"
+```
+
+### Poll for recently updated leads (Zapier trigger)
+
+```bash
+curl -X GET "https://yourdomain.com/api/leads?updated_after=2024-01-15T10:00:00Z&sort=updated_at:asc" \
+  -H "X-API-KEY: your_api_key_here"
+```
+
+## Response Fields
+
+Each lead object contains comprehensive tracking data including:
+
+- **Basic Info**: `id`, `name`, `email`, `phone`, `status`, `value`, `currency`, `note`
+- **Attribution**: `gclid`, `fbc`, `fbp`, `ga4cid`, `ga4sid`, `li_fat_id`, `msclkid`
+- **UTM Parameters**: `utm_source`, `utm_medium`, `utm_campaign`
+- **Context**: `website`, `path`, `conversionName`
+- **Timestamps**: `createdAt`, `updatedAt`, `qualifiedAt`
+- **Custom Data**: `custom` (JSON string)

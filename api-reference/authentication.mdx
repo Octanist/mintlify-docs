@@ -1,0 +1,76 @@
+---
+title: "Authentication"
+description: "Learn how to authenticate with the Octanist API"
+---
+
+## API Key Authentication
+
+All API endpoints require authentication via an API key passed in the `X-API-KEY` header.
+
+### Getting Your API Key
+
+You can find your API key in your Octanist dashboard under Settings > General > API Keys.
+
+<Warning>
+  Make sure you are in the correct organization. The API key is
+  organization-specific and if you get the wrong API key, you might see leads
+  going to the wrong organization or other unwanted behavior.
+</Warning>
+
+### Using Your API Key
+
+Include your API key in the `X-API-KEY` header with every request:
+
+```bash
+X-API-KEY: your_api_key_here
+```
+
+### Example Request
+
+```bash
+curl -X GET "https://yourdomain.com/api/leads" \
+  -H "X-API-KEY: your_api_key_here"
+```
+
+### Testing Your API Key
+
+You can validate your API key using the check endpoint:
+
+```bash
+curl -X POST "https://yourdomain.com/api/check" \
+  -H "X-API-KEY: your_api_key_here"
+```
+
+**Success Response:**
+
+```json
+{
+  "success": true
+}
+```
+
+**Error Response:**
+
+```json
+{
+  "error": "Invalid or missing API key"
+}
+```
+
+## Security Best Practices
+
+<Warning>
+  Keep your API key secure and never expose it in client-side code or public
+  repositories.
+</Warning>
+
+- Store your API key in environment variables
+- Rotate your API keys regularly
+- Monitor API usage for unusual activity
+
+## Error Responses
+
+Authentication errors will return:
+
+- `401 Unauthorized` - Invalid or missing API key
+- `403 Forbidden` - API key valid but access denied (e.g., lead rejected by filtering rules)

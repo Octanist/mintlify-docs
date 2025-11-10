@@ -1,4 +1,81 @@
 ---
-title: 'Create Plant'
-openapi: 'POST /plants'
+title: "Create Lead"
+openapi: "POST /api/leads"
 ---
+
+Create a new lead in your Octanist system. At least one of `name`, `email`, `phone`, or `custom` is required.
+
+## Required Fields
+
+At least one of the following must be provided:
+
+- `name` - Lead name
+- `email` - Lead email address
+- `phone` - Lead phone number
+- `custom` - Custom JSON string with additional data
+
+## Attribution Fields
+
+Include these fields to track lead sources and enable proper attribution:
+
+- **Google Ads**: `gclid` (Google Click ID)
+- **Facebook/Meta**: `fbc` (Facebook Click ID), `fbp` (Facebook Browser ID)
+- **Google Analytics**: `ga4cid` (Client ID), `ga4sid` (Session ID)
+- **LinkedIn**: `li_fat_id` (First-Party Ad Tracking ID)
+- **Microsoft Ads**: `msclkid` (Microsoft Click ID)
+- **UTM Parameters**: `utm_source`, `utm_medium`, `utm_campaign`
+
+## Consent Management
+
+For GDPR compliance, include consent status:
+
+- `ad_storage` - Cookie consent for ad storage
+- `ad_user_data` - Cookie consent for ad user data
+- `ad_personalization` - Cookie consent for ad personalization
+- `analytics_storage` - Cookie consent for analytics storage
+
+Values can be `true`, `false`, or string values like `"granted"`, `"denied"`.
+
+## Example Usage
+
+### Basic lead creation
+
+```bash
+curl -X POST "https://yourdomain.com/api/leads" \
+  -H "X-API-KEY: your_api_key_here" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Jane Smith",
+    "email": "jane@example.com",
+    "phone": "+1234567890",
+    "note": "Interested in enterprise plan"
+  }'
+```
+
+### Lead with full attribution
+
+```bash
+curl -X POST "https://yourdomain.com/api/leads" \
+  -H "X-API-KEY: your_api_key_here" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "John Doe",
+    "email": "john@example.com",
+    "gclid": "abc123",
+    "utm_source": "google",
+    "utm_medium": "cpc",
+    "utm_campaign": "winter_sale",
+    "website": "https://example.com",
+    "path": "/contact"
+  }'
+```
+
+## Response
+
+Returns the created lead ID:
+
+```json
+{
+  "id": "lead_123"
+}
+```

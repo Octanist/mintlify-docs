@@ -1,33 +1,65 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: "API Introduction"
+description: "Get started with the Octanist API for lead management and CRM integration"
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+## Welcome to the Octanist API
 
-## Welcome
+The Octanist API allows you to programmatically manage leads, integrate with CRM systems, and build custom automation workflows. Whether you're building a Zapier integration, connecting your existing tools, or creating custom lead management solutions, our API provides the flexibility you need.
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+## What You Can Do
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+<CardGroup cols={2}>
+  <Card title="Manage Leads" icon="users" href="/api-reference/endpoint/create">
+    Create, update, and retrieve leads with comprehensive attribution data
+  </Card>
+  <Card title="CRM Integration" icon="link" href="/api-reference/endpoint/get">
+    Sync leads with your existing CRM and marketing automation tools
+  </Card>
+  <Card
+    title="Zapier Automation"
+    icon="bolt"
+    href="/api-reference/endpoint/get"
+  >
+    Build powerful automation workflows with polling triggers and actions
+  </Card>
+  <Card
+    title="Attribution Tracking"
+    icon="chart-line"
+    href="/api-reference/endpoint/create"
+  >
+    Track leads across Google Ads, Facebook, LinkedIn, and other platforms
+  </Card>
+</CardGroup>
 
-## Authentication
+## Getting Started
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+1. **Get Your API Key**: Find your API key in your Octanist dashboard under Settings > API Keys
+2. **Test Authentication**: Use the [Check API Key](/api-reference/endpoint/check) endpoint to validate your setup
+3. **Start Building**: Begin with [creating leads](/api-reference/endpoint/create) or [retrieving existing ones](/api-reference/endpoint/get)
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+## Authentication Required
+
+<Warning>
+  All API endpoints require authentication. See our [Authentication
+  Guide](/api-reference/authentication) for details on how to authenticate your
+  requests.
+</Warning>
+
+All API endpoints use API key authentication via the `X-API-KEY` header:
+
+```bash
+X-API-KEY: your_api_key_here
 ```
+
+## Base URL
+
+Replace `yourdomain.com` in the examples with your actual Octanist domain.
+
+## Rate Limiting
+
+Rate limits may apply to your organization. Contact support for details about your specific limits.
+
+## Support
+
+Need help? Check out our [full documentation](https://octanist.com/docs) or contact our support team.

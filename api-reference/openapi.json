@@ -1,54 +1,50 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
-    "license": {
-      "name": "MIT"
-    },
-    "version": "1.0.0"
+    "title": "Octanist API",
+    "description": "The Octanist API allows you to manage leads, check API keys, and integrate with your CRM and marketing automation tools.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Octanist Support",
+      "url": "https://octanist.com/docs"
+    }
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "https://octanist.com",
+      "description": "Production server"
     }
   ],
   "security": [
     {
-      "bearerAuth": []
+      "apiKeyAuth": []
     }
   ],
   "paths": {
-    "/plants": {
-      "get": {
-        "description": "Returns all plants from the system that the user has access to",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The maximum number of results to return",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
+    "/api/check": {
+      "post": {
+        "summary": "Check API Key",
+        "description": "Validate your API key",
+        "tags": ["Authentication"],
         "responses": {
           "200": {
-            "description": "Plant response",
+            "description": "API key is valid",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    }
                   }
                 }
               }
             }
           },
-          "400": {
-            "description": "Unexpected error",
+          "401": {
+            "description": "Invalid or missing API key",
             "content": {
               "application/json": {
                 "schema": {
@@ -56,35 +52,9 @@
                 }
               }
             }
-          }
-        }
-      },
-      "post": {
-        "description": "Creates a new plant in the store",
-        "requestBody": {
-          "description": "Plant to add to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
           },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Plant"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "unexpected error",
+          "500": {
+            "description": "Server error",
             "content": {
               "application/json": {
                 "schema": {
@@ -96,28 +66,255 @@
         }
       }
     },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
+    "/api/leads": {
+      "get": {
+        "summary": "Get Leads",
+        "description": "Retrieve a list of leads with optional filtering and sorting",
+        "tags": ["Leads"],
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "description": "ID of plant to delete",
-            "required": true,
+            "name": "status",
+            "in": "query",
+            "description": "Filter by lead status",
+            "schema": {
+              "type": "string",
+              "enum": ["open", "win", "lost"]
+            }
+          },
+          {
+            "name": "updated_after",
+            "in": "query",
+            "description": "ISO 8601 date string. Returns leads updated after this date",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2024-01-15T10:30:00Z"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sort order",
+            "schema": {
+              "type": "string",
+              "enum": ["updated_at:desc", "updated_at:asc"],
+              "default": "updated_at:desc"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of leads to return",
             "schema": {
               "type": "integer",
-              "format": "int64"
+              "minimum": 1,
+              "maximum": 100,
+              "default": 100
             }
           }
         ],
         "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
+          "200": {
+            "description": "List of leads",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Lead"
+                  }
+                }
+              }
+            }
           },
           "400": {
-            "description": "unexpected error",
+            "description": "Invalid query parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid or missing API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create Lead",
+        "description": "Create a new lead",
+        "tags": ["Leads"],
+        "requestBody": {
+          "description": "Lead data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLeadRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Lead created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "lead_123"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body or missing required fields",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid or missing API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Lead rejected by filtering rules",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update Lead",
+        "description": "Update a lead's status, value, or note. Can find leads by ID, email, or phone number.",
+        "tags": ["Leads"],
+        "requestBody": {
+          "description": "Lead update data",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateLeadRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Lead updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "leadId": {
+                      "type": "string",
+                      "example": "lead_123"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "won"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body or missing required fields",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid or missing API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Lead not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Lead not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error",
             "content": {
               "application/json": {
                 "schema": {
@@ -132,63 +329,323 @@
   },
   "components": {
     "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
+      "Lead": {
         "type": "object",
         "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
+          "id": {
+            "type": "string",
+            "description": "Unique lead identifier",
+            "example": "lead_123"
           },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
+          "name": {
+            "type": "string",
+            "description": "Lead name",
+            "example": "John Doe"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Lead email",
+            "example": "john@example.com"
+          },
+          "phone": {
+            "type": "string",
+            "description": "Lead phone number",
+            "example": "+1234567890"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["open", "win", "lost"],
+            "description": "Lead status",
+            "example": "open"
+          },
+          "value": {
+            "type": "number",
+            "description": "Lead value",
+            "example": 5000
+          },
+          "currency": {
+            "type": "string",
+            "description": "Currency code",
+            "example": "USD"
+          },
+          "note": {
+            "type": "string",
+            "description": "Notes about the lead",
+            "example": "Interested in premium plan"
+          },
+          "conversionName": {
+            "type": "string",
+            "description": "Conversion source name",
+            "example": "Contact Form"
+          },
+          "gclid": {
+            "type": "string",
+            "description": "Google Click ID",
+            "example": "abc123"
+          },
+          "fbc": {
+            "type": "string",
+            "description": "Facebook Click ID",
+            "example": "fb.1.123456789"
+          },
+          "fbp": {
+            "type": "string",
+            "description": "Facebook Browser ID",
+            "example": "fb.1.987654321"
+          },
+          "ga4cid": {
+            "type": "string",
+            "description": "Google Analytics 4 Client ID",
+            "example": "ga4_client_id"
+          },
+          "ga4sid": {
+            "type": "string",
+            "description": "Google Analytics 4 Session ID",
+            "example": "ga4_session_id"
+          },
+          "li_fat_id": {
+            "type": "string",
+            "description": "LinkedIn First-Party Ad Tracking ID",
+            "example": "linkedin_id"
+          },
+          "msclkid": {
+            "type": "string",
+            "description": "Microsoft Click ID",
+            "example": "microsoft_click_id"
+          },
+          "utm_source": {
+            "type": "string",
+            "description": "UTM source parameter",
+            "example": "google"
+          },
+          "utm_medium": {
+            "type": "string",
+            "description": "UTM medium parameter",
+            "example": "cpc"
+          },
+          "utm_campaign": {
+            "type": "string",
+            "description": "UTM campaign parameter",
+            "example": "summer_sale"
+          },
+          "website": {
+            "type": "string",
+            "description": "Referrer website",
+            "example": "https://example.com"
+          },
+          "path": {
+            "type": "string",
+            "description": "Page path where lead was captured",
+            "example": "/pricing"
+          },
+          "custom": {
+            "type": "string",
+            "description": "Custom JSON string for additional data",
+            "example": "{\"custom_field\": \"value\"}"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Lead creation timestamp",
+            "example": "2024-01-15T10:30:00Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Lead last update timestamp",
+            "example": "2024-01-16T14:20:00Z"
+          },
+          "qualifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Lead qualification timestamp",
+            "example": "2024-01-15T11:00:00Z"
           }
         }
       },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
-          },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ]
-      },
-      "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
+      "CreateLeadRequest": {
         "type": "object",
         "properties": {
-          "error": {
-            "type": "integer",
-            "format": "int32"
+          "name": {
+            "type": "string",
+            "description": "Lead name",
+            "example": "Jane Smith"
           },
-          "message": {
-            "type": "string"
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Lead email",
+            "example": "jane@example.com"
+          },
+          "phone": {
+            "type": "string",
+            "description": "Lead phone number",
+            "example": "+1234567890"
+          },
+          "gclid": {
+            "type": "string",
+            "description": "Google Click ID",
+            "example": "abc123"
+          },
+          "fbc": {
+            "type": "string",
+            "description": "Facebook Click ID",
+            "example": "fb.1.123456789"
+          },
+          "fbp": {
+            "type": "string",
+            "description": "Facebook Browser ID",
+            "example": "fb.1.987654321"
+          },
+          "ga4cid": {
+            "type": "string",
+            "description": "Google Analytics 4 Client ID",
+            "example": "ga4_client_id"
+          },
+          "ga4sid": {
+            "type": "string",
+            "description": "Google Analytics 4 Session ID",
+            "example": "ga4_session_id"
+          },
+          "li_fat_id": {
+            "type": "string",
+            "description": "LinkedIn First-Party Ad Tracking ID",
+            "example": "linkedin_id"
+          },
+          "msclkid": {
+            "type": "string",
+            "description": "Microsoft Click ID",
+            "example": "microsoft_click_id"
+          },
+          "utm_source": {
+            "type": "string",
+            "description": "UTM source parameter",
+            "example": "google"
+          },
+          "utm_medium": {
+            "type": "string",
+            "description": "UTM medium parameter",
+            "example": "cpc"
+          },
+          "utm_campaign": {
+            "type": "string",
+            "description": "UTM campaign parameter",
+            "example": "winter_sale"
+          },
+          "website": {
+            "type": "string",
+            "description": "Referrer website",
+            "example": "https://example.com"
+          },
+          "path": {
+            "type": "string",
+            "description": "Page path where lead was captured",
+            "example": "/contact"
+          },
+          "ad_storage": {
+            "oneOf": [{ "type": "boolean" }, { "type": "string" }],
+            "description": "Cookie consent: ad_storage",
+            "example": false
+          },
+          "ad_user_data": {
+            "oneOf": [{ "type": "boolean" }, { "type": "string" }],
+            "description": "Cookie consent: ad_user_data",
+            "example": false
+          },
+          "ad_personalization": {
+            "oneOf": [{ "type": "boolean" }, { "type": "string" }],
+            "description": "Cookie consent: ad_personalization",
+            "example": false
+          },
+          "analytics_storage": {
+            "oneOf": [{ "type": "boolean" }, { "type": "string" }],
+            "description": "Cookie consent: analytics_storage",
+            "example": false
+          },
+          "custom": {
+            "type": "string",
+            "description": "Custom JSON string for additional data",
+            "example": "{\"custom_field\": \"value\"}"
+          },
+          "note": {
+            "type": "string",
+            "description": "Notes about the lead",
+            "example": "Interested in enterprise plan"
+          }
+        },
+        "description": "At least one of name, email, phone, or custom is required"
+      },
+      "UpdateLeadRequest": {
+        "type": "object",
+        "required": ["changedTo"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Lead ID",
+            "example": "lead_123"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Lead email (used to find lead if no ID)",
+            "example": "jane@example.com"
+          },
+          "phone": {
+            "type": "string",
+            "description": "Lead phone (used to find lead if no ID or email)",
+            "example": "+1234567890"
+          },
+          "value": {
+            "oneOf": [{ "type": "number" }, { "type": "string" }],
+            "description": "Lead value (required for won and qualified status)",
+            "example": 10000
+          },
+          "changedTo": {
+            "type": "string",
+            "enum": ["won", "lost", "qualified"],
+            "description": "New status",
+            "example": "won"
+          },
+          "note": {
+            "type": "string",
+            "description": "Update the lead's note",
+            "example": "Closed via phone call"
+          },
+          "alsoQualified": {
+            "type": "boolean",
+            "description": "When changedTo is won, also mark as qualified",
+            "default": false,
+            "example": true
+          }
+        },
+        "description": "At least one of id, email, or phone is required"
+      },
+      "Error": {
+        "type": "object",
+        "required": ["error"],
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Invalid or missing API key"
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Optional validation details"
           }
         }
       }
     },
     "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-KEY",
+        "description": "API key for authentication"
       }
     }
   }
