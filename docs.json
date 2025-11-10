@@ -1,0 +1,105 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Docs octanist",
+  "colors": {
+    "primary": "#3F6967",
+    "light": "#50C1AE",
+    "dark": "#3F6967"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "qualifying-leads"
+            ]
+          },
+          {
+            "group": "Incoming integrations",
+            "pages": [
+              "incoming-integrations/gtm",
+              "incoming-integrations/wordpress",
+              "incoming-integrations/manual",
+              "incoming-integrations/import"
+            ]
+          },
+          {
+            "group": "Outgoing integrations",
+            "pages": [
+              "outgoing-integrations/google-ads",
+              "outgoing-integrations/google-analytics",
+              "outgoing-integrations/meta",
+              "outgoing-integrations/microsoft-ads",
+              "outgoing-integrations/linkedin",
+              "outgoing-integrations/google-bigquery",
+              "outgoing-integrations/gtm-server"
+            ]
+          },
+          {
+            "group": "Updating integrations",
+            "pages": [
+              "updating-integrations/recruitee"
+            ]
+          },
+          {
+            "group": "User consent",
+            "pages": [
+              "user-consent/consent-mode"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "API Documentation",
+            "pages": [
+              "api-reference/introduction",
+              "api-reference/authentication"
+            ]
+          },
+          {
+            "group": "Endpoints",
+            "pages": [
+              "api-reference/endpoint/check",
+              "api-reference/endpoint/get",
+              "api-reference/endpoint/create",
+              "api-reference/endpoint/delete"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/logo-no-bg.svg",
+    "dark": "/logo/logo-white.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:support@octanist.com"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://octanist.com/auth/signin/"
+    }
+  },
+  "footer": {
+    "socials": {
+      "linkedin": "https://www.linkedin.com/company/octanist",
+      "website": "https://octanist.com"
+    }
+  }
+}
