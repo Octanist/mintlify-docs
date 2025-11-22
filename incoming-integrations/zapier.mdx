@@ -1,0 +1,144 @@
+---
+title: "Zapier"
+description: "Receive, Qualify, and Send leads using Zapier and Octanist."
+---
+
+The Zapier integration allows you to:
+
+- **Send leads** to Octanist
+- **Qualify leads** based on Zapier triggers
+- **Receive (qualified) leads** from Octanist and pass them to your own databases, CRMs, or channels
+
+This integration enables highly customizable lead flows, while Octanist automatically formats the data correctly for your marketing channels.
+
+---
+
+## Table of Contents
+
+1. [Setup Video](#setup-video)
+2. [Connect Octanist](#1-octanist)
+3. [Using Zapier with Octanist](#2-zapier)
+
+---
+
+## Setup Video
+
+_Coming soon._
+
+---
+
+## 1. Octanist
+
+1. Go to [octanist.com](https://octanist.com/) and navigate to **Integrations**.
+2. Click **Zapier**.
+
+Once you click on Zapier, you will be redirected to the[ Zapier website](https://zapier.com/apps/octanist/integrations). Here you can create a Zap that communicates with Octanist.
+
+---
+
+## 2. Zapier
+
+### **Send Leads to Octanist**
+
+To send leads to Octanist using Zapier:
+
+1. Create a new Zap and start with a trigger (e.g., an incoming email in Gmail).
+2. Add **Octanist** as your next step.
+3. Select the action event: **Create Lead**.
+
+   ![Zapier Setup Create Lead Pn](/images/zapier-setup-create-lead.png)
+4. Under **Account**, connect your Octanist account.\
+   You will be prompted to enter your API key.
+   - You can find this in **Octanist → Settings → General → API Key**.
+   - Create a new API key and give it a clear and descriptive name.
+
+     ![Zapier Get Api Key Octanist Pn](/images/zapier-get-api-key-octanist.png)
+5. Return to Zapier and paste the API key.
+
+![Zapier Connect Octanist To Zapier Pn](/images/zapier-connect-octanist-to-zapier.png)
+
+Once connected, go to the **Configure** tab.
+
+Here you can map the fields you want to send to Octanist. These fields come from your trigger step.\
+You can insert values easily by typing `/` to search for the Zapier variables.
+
+**Example:**\
+If your trigger is “New Gmail Email,” you might map the Gmail **From Name** into the Octanist **Name** field.
+
+We also recommend adding **UTM parameters** to ensure proper source attribution.
+
+![Zapier Configure Create Lead Pn](/images/zapier-configure-create-lead.png)
+
+---
+
+### **Testing the Lead**
+
+After configuring your fields:
+
+1. Go to the **Test** tab in Zapier.
+2. Run the test to send a lead to Octanist.
+3. Check Octanist to confirm that your lead was received correctly.
+
+If something looks wrong, verify the following:
+
+- An **email address** is present
+- A **phone number** is present (if available)
+- A **name** is present
+- Custom fields and UTM values are correctly included
+
+These values, especially the email, are important for qualifying and sending leads to other channels.
+
+When everything works as expected, publish your Zap.
+
+![Zapier Test Publish Pn](/images/zapier-test-publish.png)
+
+You are now ready. All incoming leads will be automatically delivered to Octanist.
+
+---
+
+### **Update Leads in Octanist**
+
+To update lead statuses:
+
+1. Create a new Zap or duplicate your existing one.
+2. Choose **Update Lead Status** instead of **Create Lead**.
+
+   ![Zapier Setup Update Lead Pn](/images/zapier-setup-update-lead.png)
+3. Remember:
+
+   > A lead must already exist in Octanist before it can be updated.
+4. In the **Configure** tab, map the email field and any other values from your trigger.
+
+![Zapier Configure Update Lead Pn](/images/zapier-configure-update-lead.png)
+
+Test the Zap and then publish it.
+
+---
+
+### **Triggering Actions for Won Leads**
+
+Octanist can also **send won leads to Zapier**.
+
+1. Create a new Zap.
+2. Select **Octanist** as the trigger.
+
+   ![Zapier Add Octanist To Zap Pn](/images/zapier-add-octanist-to-zap.png)
+3. Choose **New Won Lead**.
+
+   ![Zapier Setup Won Lead Pn](/images/zapier-setup-won-lead.png)
+4. Add your preferred follow-up action — for example, sending an email notification.
+
+![download.png](/images/download.png)
+
+In this example, we use the lead’s name in the email body.
+
+Test your Zap and publish it.
+
+---
+
+## Conclusion
+
+Zapier enables you to build your own flexible lead workflows with Octanist.\
+You can send leads to Octanist, qualify them inside or outside Octanist, and trigger follow-up actions when leads change status.
+
+Octanist ensures your data is captured correctly, enriched, and translated into the right format for your marketing channels.
