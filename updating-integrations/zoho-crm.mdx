@@ -1,0 +1,245 @@
+---
+title: "Zoho CRM"
+description: "Connect Zoho CRM to Octanist to update leads based on Zoho CRM events."
+---
+
+The Zoho CRM integration allows you to update leads based on Zoho CRM deal events.
+
+<Info>
+  The Zoho CRM integration is quite difficult to set up. If you are having
+  trouble or would like us to help you set it up, please contact us via
+  [support@octanist.com](mailto:support@octanist.com).
+</Info>
+
+## Table of Contents
+
+1. [Zoho CRM](#1-zoho-crm)
+2. [Octanist](#2-octanist)
+
+## 1. Zoho CRM
+
+<img
+  src="/images/zoho-crm/step-1.jpg"
+  alt="Zoho CRM Step 1"
+  title="Zoho CRM Step 1"
+  style={{ width: "50%" }}
+/>
+
+1. Go to [Zoho CRM](https://www.zoho.com/crm/) and log in. Click the **Settings** icon in the top-left corner.
+
+2. In the left sidebar, search for **connections** and click on it.
+
+<img
+  src="/images/zoho-crm/step-2.jpg"
+  alt="Zoho CRM Step 2"
+  title="Zoho CRM Step 2"
+  style={{ width: "50%" }}
+/>
+
+3. Click on **Create new connection**.
+
+<img
+  src="/images/zoho-crm/step-3.jpg"
+  alt="Zoho CRM Step 3"
+  title="Zoho CRM Step 3"
+  style={{ width: "50%" }}
+/>
+
+4. Select **Custom Services** and click on **Create New Service**.
+
+<img
+  src="/images/zoho-crm/step-4.jpg"
+  alt="Zoho CRM Step 4"
+  title="Zoho CRM Step 4"
+  style={{ width: "100%" }}
+/>
+
+5. Here we are creating a new service. We give it the following details:
+
+- **Name**: give it a name that is easy to identify, such as _Octanist_.
+- **Authentication Type**: select _API Key_.
+- **Parameter Type**: select _Header_.
+- **Parameter Key**: enter _X-API-KEY_.
+
+Then create the new service.
+
+<img
+  src="/images/zoho-crm/step-5.jpg"
+  alt="Zoho CRM Step 5"
+  title="Zoho CRM Step 5"
+  style={{ width: "100%" }}
+/>
+
+6. Then give the connection a name. Here we give it the name _Octanist_. and click on **Create And Connect**.
+
+<img
+  src="/images/zoho-crm/step-6.jpg"
+  alt="Zoho CRM Step 6"
+  title="Zoho CRM Step 6"
+  style={{ width: "100%" }}
+/>
+
+6.1. You will be prompted to enter your API key.
+
+- You can find this in **Octanist → Settings → General → API Key**.
+- Create a new API key and give it a clear and descriptive name.
+
+  ![Zoho CRM Get Api Key Octanist Pn](/images/zapier-get-api-key-octanist.png)
+
+- Click **Connect**.
+
+<img
+  src="/images/zoho-crm/api-key.jpg"
+  alt="Zoho CRM API Key"
+  title="Zoho CRM API Key"
+  style={{ width: "50%" }}
+/>
+
+7.  Search for **webhooks** and click **Configure Webhook**.
+
+<img
+  src="/images/zoho-crm/step-7.jpg"
+  alt="Zoho CRM Step 7"
+  title="Zoho CRM Step 7"
+  style={{ width: "100%" }}
+/>
+
+8.  Now we will create a new webhook. Here are the fields we need to fill in:
+
+- **Name**: give it a name that is easy to identify, such as _Octanist_.
+- **Method**: select _POST_.
+- **URL to Notify**: enter: `https://octanist.com/api/integrations/updating/zoho/`
+- **Authorization Type**: select _Connection_ and choose the connection you created.
+- **Module**: select _Deals_.
+- **Body**:
+
+  - **Type**: select _Raw_.
+  - **Format**: select _JSON_.
+  - **Content**: enter the following JSON:
+
+```json
+{
+  "amount": "${Deals.Amount}",
+  "stage": "${Deals.Stage}",
+  "contact_email": "${Contacts.Email}",
+  "contact_phone": "${Contacts.Phone}"
+}
+```
+
+- **Save**
+
+<Warning>
+  This is super important to get right. If any of these fields are incorrect,
+  the webhook will not work and leads will not be correctly updated in Octanist.
+</Warning>
+
+<img
+  src="/images/zoho-crm/step-8.jpg"
+  alt="Zoho CRM Step 8"
+  title="Zoho CRM Step 8"
+  style={{ width: "100%" }}
+/>
+
+9.  Search for **workflow rules** and select **Rules**. On the page click on **Create Rule**.
+
+<img
+  src="/images/zoho-crm/step-9.jpg"
+  alt="Zoho CRM Step 9"
+  title="Zoho CRM Step 9"
+  style={{ width: "100%" }}
+/>
+
+10. You will see this popup. Give the following information:
+
+- **Module**: select _Deals_.
+- **Rule Name**: give it a name that is easy to identify, such as _Octanist_.
+
+<img
+  src="/images/zoho-crm/step-10.jpg"
+  alt="Zoho CRM Step 10"
+  title="Zoho CRM Step 10"
+  style={{ width: "100%" }}
+/>
+
+11. When creating a rule. For the WHEN step choose the following options:
+
+- Execute this workflow rule based on: select _Record action_.
+- Then select _Edit_ and _Specific field(s) get modified_.
+- When: **Stage** is modified to **any value**.
+- Click **Next**.
+
+<img
+  src="/images/zoho-crm/step-11.jpg"
+  alt="Zoho CRM Step 11"
+  title="Zoho CRM Step 11"
+  style={{ width: "100%" }}
+/>
+
+12. Select **All Deals** and click **Done**.
+
+<img
+  src="/images/zoho-crm/step-12.jpg"
+  alt="Zoho CRM Step 12"
+  title="Zoho CRM Step 12"
+  style={{ width: "100%" }}
+/>
+
+13. For the action select **Webhook** and select the webhook we created earlier.
+
+<img
+  src="/images/zoho-crm/step-13.jpg"
+  alt="Zoho CRM Step 13"
+  title="Zoho CRM Step 13"
+  style={{ width: "100%" }}
+/>
+
+14. Click **Save**.
+
+<img
+  src="/images/zoho-crm/step-14.jpg"
+  alt="Zoho CRM Step 14"
+  title="Zoho CRM Step 14"
+  style={{ width: "70%" }}
+/>
+
+Now the Zoho CRM integration is set up from Zoho CRM side. Next we need to set it up in Octanist.
+
+## 2. Octanist
+
+1. Go to [Octanist](https://octanist.com/) and navigate to [**Integrations \> Updating \> Add New**].
+2. Choose **Zoho CRM** and click **Add Integration**.
+
+<img
+  src="/images/zoho-crm/step-15.jpg"
+  alt="Zoho CRM Step 15"
+  title="Zoho CRM Step 15"
+  style={{ width: "100%" }}
+/>
+
+3. Add a **Name**: give it a name that is easy to identify, such as _Octanist - Zoho CRM Integration_.
+
+4. For each of the stages select the name of the stage as it is in Zoho CRM.
+
+<img
+  src="/images/zoho-crm/step-16.jpg"
+  alt="Zoho CRM Step 16"
+  title="Zoho CRM Step 16"
+  style={{ width: "100%" }}
+/>
+
+5. Enter fallback values when the amount field is not present.
+
+6. Then click **Create Zoho CRM Integration**.
+
+<img
+  src="/images/zoho-crm/step-17.jpg"
+  alt="Zoho CRM Step 17"
+  title="Zoho CRM Step 17"
+  style={{ width: "70%" }}
+/>
+
+## Important
+
+You're all set! Please test by moving a deal within Zoho CRM.
+
+If you have any questions about this setup, contact us via [support@octanist.com](mailto:support@octanist.com).

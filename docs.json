@@ -11,22 +11,18 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Documentation",
+        "tab": "Guides",
         "groups": [
           {
             "group": "Get Started",
-            "pages": [
-              "introduction",
-              "quickstart",
-              "qualifying-leads"
-            ]
+            "pages": ["introduction", "quickstart", "qualifying-leads"]
           },
           {
             "group": "Incoming integrations",
             "pages": [
               "incoming-integrations/gtm",
               "incoming-integrations/wordpress",
-              "incoming-integrations/manual",
+              "api-reference",
               "incoming-integrations/import"
             ]
           },
@@ -45,14 +41,17 @@
           {
             "group": "Updating integrations",
             "pages": [
-              "updating-integrations/recruitee"
+              "updating-integrations/recruitee",
+              "updating-integrations/zoho-crm"
             ]
           },
           {
+            "group": "Integrations",
+            "pages": ["integrations/zapier"]
+          },
+          {
             "group": "User consent",
-            "pages": [
-              "user-consent/consent-mode"
-            ]
+            "pages": ["user-consent/consent-mode"]
           }
         ]
       },
@@ -68,9 +67,7 @@
           },
           {
             "group": "Authentication",
-            "pages": [
-              "api-reference/endpoint/check"
-            ]
+            "pages": ["api-reference/endpoint/check"]
           },
           {
             "group": "Leads",
