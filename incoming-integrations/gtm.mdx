@@ -56,7 +56,7 @@ Need help setting up octanist? Watch our setup video. For the most up-to-date im
       user_data: {
         email: yourEmailVariable,
         phone_number: yourPhoneVariable,
-        company_name: yourCompanyVariable, // optional
+        name: yourNameVariable, // optional
       },
     });
   </script>
@@ -74,9 +74,59 @@ Need help setting up octanist? Watch our setup video. For the most up-to-date im
 ### 3.1 Create a Workspace
 
 - Click on **Default Workspace**.
-- Give the Workspace a name (e.g., _Octanist Setup_).
+- Click on te **\+ sign** in the upper right corner, in order to **create a new workspace**
+- Give the Workspace a name (e.g., **_Octanist Setup_**).
+- Click on **Save**
 
-### 3.2 Add the Template
+### 3.2 Create the DataLayer variables (it is easier than you think)
+
+_If your developer implemented the dataLayer as mentioned in step 2. Flow these steps_
+
+- Go to the **Variables tab**
+
+<img
+  src="/images/google-tag-manager/Variables-tab.png"
+  alt=""
+  style={{ width:"23%" }}
+/>
+
+- Navigate to the **User-Defined Variables**. Click on the right hand side on **New**, to create a new variable
+- For email give it the name: **DLV - user_data.email**
+- Click on **Variable Configuration**
+- Click on **Data Layer Variable** (underneath Page Variables)
+- Fill in Data Layer Variable Name: **user_data.email**
+- Redo these steps to create the ones for Name and Phone_number as well:
+  - DLV - user_data.name
+    - Data Layer Variable Name: **user_data.name**
+  - DLV - user_data.phone_number
+    - Data Layer Variable Name: **user_data.phone_number**
+- Setup should look like this:
+
+<img
+  src="/images/google-tag-manager/Setup-dlv.png"
+  alt=""
+  style={{ width:"100%" }}
+/>
+
+### 3.3 Create the custom event _submit_lead_form_
+
+![](/images/google-tag-manager/Tirggers-custom-event-submit_lead_form.png)
+
+- Go on the left-hand side to **Triggers**
+- Click on **New**
+- Give it the name: **Event - submit_lead_form**
+- Click on Trigger configuration and select **Custom Event** (under Other)
+
+<img
+  src="/images/google-tag-manager/custom-event-icon.png"
+  alt=""
+  style={{ width:"20%" }}
+/>
+
+- Fill the field “Event name” with **submit_lead_form** .
+- Leave the rest of the settings and, click on **Save**
+
+### 3.4 Add the Template
 
 - Go to **Templates \> Tag Templates \> Search Gallery**.
 - From here, search for "Octanist" and click on our Google-Verified Tag Template.
@@ -87,14 +137,27 @@ Need help setting up octanist? Watch our setup video. For the most up-to-date im
 
 ![](/images/google-tag-manager/incoming-gtm-octanist-to-workspace.jpg)
 
-### 3.3 Configure the Tag
+- Confirm and click on **Add**
 
-- Create a new tag: **Octanist - Offline Conversion Tracking**. _After successfully importing the template, the Octanist Tag should appear under the Custom Tab._
-- Enter your **Octanist ID**.
-- Add dataLayer variables for email address, phone number, and company name.
-- Set the trigger. For example, in step 2 we created an event for the `submit_lead_form` trigger.
+### 3.5 Configure the Tag
 
-### 3.4 Test and Publish
+- Go to **Tags**
+- Click on **New** to create a new tag and give it the name: **Octanist - Offline Conversion Tracking**.
+- Enter your **Octanist ID**. _You have saved this at the end of step 1._
+- Click on **add variable icons** and add the in step 3.2 configured Data Layer variables. It should look like this:
+
+<img
+  src="/images/google-tag-manager/datalayer-variables-octanist-tag-template-GTM.png"
+  alt="Datalayer Variables Octanist Tag Template GTM"
+  title="Datalayer Variables Octanist Tag Template GTM"
+  style={{ width:"51%" }}
+/>
+
+- Set the trigger. Click underneath the Tag configurations on **Triggering**. 
+  - Select the **Custom Event** for the **submit_lead_form trigger**, that we created in step 3.3 
+- Leave the rest of the settings as it is. Click in the upper right corner on **Save**. 
+
+### 3.6 Test and Publish
 
 - Test the form using the GTM debug mode.
 - Publish the container once everything works correctly.
