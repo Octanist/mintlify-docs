@@ -25,8 +25,7 @@ Watch the video below, it explains all the steps in detail:
 2. Under **Manage Conversion Names**, add clear and concise conversion names. For example: _Converted Lead - Octanist_.
 
 <Warning>
-  Ensure you choose clear and concise conversion names. These must exactly match
-  the conversion names in Google Ads.
+  Ensure you choose clear and concise conversion names. These must exactly match the conversion names in Google Ads.
 </Warning>
 
 ![](/images/ads-google/manange-conversion-names.png)
@@ -36,9 +35,7 @@ Watch the video below, it explains all the steps in detail:
 3. Give the integration a clear and concise name, such as: _Company Name - Octanist - Google Ads Integration_.
 
 <Tip>
-  This name is for internal use and helps you easily identify the integration,
-  especially if you plan to set up multiple integrations for different Google
-  Ads accounts.
+  This name is for internal use and helps you easily identify the integration, especially if you plan to set up multiple integrations for different Google Ads accounts.
 </Tip>
 
 **Advanced:**
@@ -61,26 +58,27 @@ Under the advanced section of this integration, you will find two optional optio
 1. Go to [Google Ads](https://ads.google.com/aw/overview).
 2. Navigate to your account and go to **Goals \> Summary**.
 3. Create a new conversion action, select **Conversions - Offline**, and press **Continue**.\
-   _We will add a data source later._
+   _We will add a data source later. (click "Add data sourse" and select Later)_
 
    ![Google Ads Outgoing Integration Conversions Offline Connection](/images/ads-google/google-ads-outgoing-integration-conversions-offline-connection.png)
-4. Create a **Converted Lead** conversion.
+4. Create a **Converted Lead** conversion. _If you cannot find Converted lead, click on "See all"._
 
    ![Google Ads Outgoing Integration Create Converted Lead](/images/ads-google/google-ads-outgoing-integration-create-converted-lead.png)
 5. Add a new conversion action.
 6. Click on **Settings** of the new conversion action:
-   - Give it a concise name, e.g., _Octanist - Converted Lead_.
+   - Set it as a **Primary** or **Secondary** conversion depending on your preferences (this can be changed later).
+   - Give it a concise name, e.g., _Converted Lead - Octanist_.
 
      <Warning>
        This name must match exactly with the conversion action name in Octanist.
      </Warning>
-   - Set it as a **Primary** or **Secondary** conversion depending on your preferences (this can be changed later).
+   - The other settings can be left as is. 
 
    ![Google Ads Outgoing Integration Conversion Settings](/images/ads-google/google-ads-outgoing-integration-conversion-settings.png)
-7. Once done, save your settings and continue the setup until you reach the final confirmation screen.
+7. Once done, save your settings and continue the setup until you reach the final confirmation screen, as shown below.
 
    ![Google Ads Outgoing Integration Conversions Finished](/images/ads-google/google-ads-outgoing-integration-conversions-finished.png)
-8. Next, we'll configure the **Data Source (Uploads)** that sends your conversions from Octanist to Google Ads.
+8. Click Finish. In the next steps, we'll configure the **Data Source (Uploads)** that sends your conversions from Octanist to Google Ads.
 
 ### Configuring Uploads
 
@@ -88,8 +86,8 @@ Under the advanced section of this integration, you will find two optional optio
 2. Open the **Schedules** tab and add a new schedule:
    - Choose **HTTPS** as the source.
    - Enter the link provided by Octanist in the **Source URL** field.
-   - Set **Frequency** to **Weekly on Sunday**.\
-     _(Daily synchronization is not necessary unless leads convert within 24 hours.)_
+   - Set **Frequency** to **Every 24 hours**.\
+     _(Daily synchronization is not always necessary, unless leads convert within 24 hours.)_
    - Choose a preferred time, e.g., **0:00**.
 3. Save the schedule.
 
