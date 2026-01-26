@@ -22,21 +22,14 @@ Watch the video below, it explains all the steps in detail:
 The Google Analytics 4 (GA4) integration sends your marked closed, open, and converted leads to Google Analytics 4. This process uses the [Google Analytics 4 Measurement Protocol](https://developers.google.com/analytics/devguides/collection/protocol/ga4). This server-to-server solution ensures all quantitative lead data is sent to Google Analytics 4 and tied to specific channels. No personal or client data is sent to Google Analytics 4.
 
 <Warning>
-  **Note:** While the Measurement Protocol sends 100% of the data to Google
-  Analytics 4, it may face challenges linking data back to a user or session.
-  The handling of the Client ID and Session ID is managed by Octanist. Events
-  sent through the Measurement Protocol may result in "(not set)" values for
-  source/medium attribution.
+  **Note:** While the Measurement Protocol sends 100% of the data to Google Analytics 4, it may face challenges linking data back to a user or session. The handling of the Client ID and Session ID is managed by Octanist. Events sent through the Measurement Protocol may result in "(not set)" values for source/medium attribution.
 </Warning>
 
 ## 2. How the Measurement Protocol Works
 
-1. **"Won" Leads:**
-   Whenever a user is marked as a "Won" Lead, the event  is sent to Google Analytics 4 along with corresponding parameters (e.g. the **value** and **currency**).
-2. **"Open" Leads:**
-   When a value is added or updated for an "Open" Lead, the event  is sent to Google Analytics 4. The content of the note is passed as the parameter `lead_status`.
-3. **"Lost" Leads:**
-   If a user does not convert and is marked as a "Lost" Lead, the event  is sent. The parameter `unconvert_lead_reason` contains the reason for the lost lead, based on the note content.
+1. **"Won" Leads:** Whenever a user is marked as a "Won" Lead, the event  is sent to Google Analytics 4 along with corresponding parameters (e.g. the **value** and **currency**).
+2. **"Open" Leads:** When a value is added or updated for an "Open" Lead, the event  is sent to Google Analytics 4. The content of the note is passed as the parameter `lead_status`.
+3. **"Lost" Leads:** If a user does not convert and is marked as a "Lost" Lead, the event  is sent. The parameter `unconvert_lead_reason` contains the reason for the lost lead, based on the note content.
 
 ## 3. Setup Instructions
 
@@ -61,7 +54,15 @@ The Google Analytics 4 (GA4) integration sends your marked closed, open, and con
    ![](/images/google-analytics/3-5-d-measurement-protocol-api-secrets-copy-secret-value.png)
 6. Click **Create Google Analytics 4 Integration**.
 
-## 4. Reporting in Google Analytics 4
+Now, whenever you mark a lead as qualified, won or lost, they will be sent as following to GA4:
+
+- Qualified = working_lead
+- Won lead = close_convert_lead
+- Lost Lead = close_unconvert_lead
+
+These names follow the suggested naming conventions in the Google Analytics documentation.
+
+## 4. Additional reporting in Google Analytics 4
 
 Add the [custom dimensions](https://support.google.com/analytics/answer/14240153?hl=en) `lead_status` and `unconvert_lead_reason` to view the text values of your notes entered in Octanist.
 
@@ -73,7 +74,6 @@ Add the [custom dimensions](https://support.google.com/analytics/answer/14240153
 
 ![](/images/google-analytics/custom-dimension.png)
 
-To improve reporting, mark the `close_convert_lead` event as a **Key Event (Conversion)** in GA4.
-This will help you better understand the user journey and simplify reporting.
+To improve reporting, mark the `close_convert_lead` event as a **Key Event (Conversion)** in GA4. This will help you better understand the user journey and simplify reporting.
 
 ![](/images/google-analytics/key-event.png)
