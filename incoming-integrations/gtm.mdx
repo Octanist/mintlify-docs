@@ -22,8 +22,6 @@ description: "The Octanist GTM integration makes it easy to send leads to Octani
 
 Need help setting up octanist? Watch our setup video. For the most up-to-date implementation guide, please follow the written guide below.
 
-<iframe src="https://www.youtube.com/embed/aSp9Z3uqMrc" title="YouTube video player" frameborder="0" className="w-full aspect-video rounded-xl" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
-
 ## 1. Download the GTM template
 
 - Navigate within Octanist to **Integrations \> Incoming**.
@@ -112,7 +110,6 @@ _If your developer implemented the dataLayer as mentioned in step 2. Flow these 
 <img
   src="/images/google-tag-manager/Setup-dlv.png"
   alt=""
-  style={{ width:"100%" }}
 />
 
 ### 3.3 Create the custom event _submit_lead_form_
@@ -153,6 +150,7 @@ _If your developer implemented the dataLayer as mentioned in step 2. Flow these 
 
 - Go to **Tags**
 - Click on **New** to create a new tag and give it the name: **Octanist - Offline Conversion Tracking**.
+- Click on Tag Configuration and select the tag type: **Octanist - Offline Conversion Tracking** (GALLERY), underneath "Custom"
 - Enter your **Octanist ID**. _You have saved this at the end of step 1._
 - Click on **add variable icons** and add the in step 3.2 configured Data Layer variables. It should look like this:
 
